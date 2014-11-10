@@ -32,6 +32,8 @@ int main(void) {
 	}
     
 	return 0; // never reached
+    
+    // Test subversionare
 }
 
 ISR(TIMER1_COMPA_vect){
