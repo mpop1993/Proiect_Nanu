@@ -1,0 +1,449 @@
+   1               		.file	"main.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   8               		.text
+   9               	.Ltext0:
+ 101               	.global	__divsf3
+ 102               	.global	__mulsf3
+ 103               	.global	__fixsfsi
+ 106               	.global	timer_1
+ 108               	timer_1:
+ 110               	.Ltext1:
+   1:./timer.h     **** //
+   2:./timer.h     **** //  timer.h
+   3:./timer.h     **** //  avr3
+   4:./timer.h     **** //
+   5:./timer.h     **** //  Created by Pop Mihai on 28/10/14.
+   6:./timer.h     **** //  Copyright (c) 2014 Mihai. All rights reserved.
+   7:./timer.h     **** //
+   8:./timer.h     **** 
+   9:./timer.h     **** #ifndef avr3_timer_h
+  10:./timer.h     **** #define avr3_timer_h
+  11:./timer.h     **** 
+  12:./timer.h     **** void timer_1(double tMili){ // tMili -> milisecunde
+ 112               	.LM0:
+ 113               	.LFBB1:
+ 114 0000 EF92      		push r14
+ 115 0002 FF92      		push r15
+ 116 0004 0F93      		push r16
+ 117 0006 1F93      		push r17
+ 118 0008 CF93      		push r28
+ 119 000a DF93      		push r29
+ 120               	/* prologue: function */
+ 121               	/* frame size = 0 */
+ 122               	/* stack size = 6 */
+ 123               	.L__stack_usage = 6
+  13:./timer.h     ****     
+  14:./timer.h     ****     double tSecunda;
+  15:./timer.h     ****     int tRegistru;
+  16:./timer.h     ****     
+  17:./timer.h     ****     tSecunda = tMili/1000;
+ 125               	.LM1:
+ 126 000c 20E0      		ldi r18,0
+ 127 000e 30E0      		ldi r19,0
+ 128 0010 4AE7      		ldi r20,lo8(122)
+ 129 0012 54E4      		ldi r21,lo8(68)
+ 130 0014 0E94 0000 		call __divsf3
+  18:./timer.h     ****     
+  19:./timer.h     ****     tRegistru = floor(16000000/1024*tSecunda); // aprox downwards to closest integer
+ 132               	.LM2:
+ 133 0018 20E0      		ldi r18,0
+ 134 001a 34E2      		ldi r19,lo8(36)
+ 135 001c 44E7      		ldi r20,lo8(116)
+ 136 001e 56E4      		ldi r21,lo8(70)
+ 137 0020 0E94 0000 		call __mulsf3
+ 138 0024 0E94 0000 		call floor
+  20:./timer.h     ****     
+  21:./timer.h     ****     // Set timer 1
+  22:./timer.h     ****     
+  23:./timer.h     ****     cli();
+ 140               	.LM3:
+ 141               	/* #APP */
+ 142               	 ;  23 "./timer.h" 1
+ 143 0028 F894      		cli
+ 144               	 ;  0 "" 2
+  24:./timer.h     ****     
+  25:./timer.h     ****     TCCR1A=0;
+ 146               	.LM4:
+ 147               	/* #NOAPP */
+ 148 002a 1092 8000 		sts 128,__zero_reg__
+  26:./timer.h     ****     TCCR1B=0;
+ 150               	.LM5:
+ 151 002e C1E8      		ldi r28,lo8(-127)
+ 152 0030 D0E0      		ldi r29,0
+ 153 0032 1882      		st Y,__zero_reg__
+  27:./timer.h     ****     
+  28:./timer.h     ****     OCR1A |= tRegistru; // 16*10^6/1*1024 [15625 = 1 secunda]
+ 155               	.LM6:
+ 156 0034 08E8      		ldi r16,lo8(-120)
+ 157 0036 10E0      		ldi r17,0
+ 158 0038 F801      		movw r30,r16
+ 159 003a E080      		ld r14,Z
+ 160 003c F180      		ldd r15,Z+1
+  19:./timer.h     ****     tRegistru = floor(16000000/1024*tSecunda); // aprox downwards to closest integer
+ 162               	.LM7:
+ 163 003e 0E94 0000 		call __fixsfsi
+ 165               	.LM8:
+ 166 0042 6E29      		or r22,r14
+ 167 0044 7F29      		or r23,r15
+ 168 0046 F801      		movw r30,r16
+ 169 0048 7183      		std Z+1,r23
+ 170 004a 6083      		st Z,r22
+  29:./timer.h     ****     
+  30:./timer.h     ****     TCCR1B |= (1<<WGM12); // Turn on CTC mode
+ 172               	.LM9:
+ 173 004c 8881      		ld r24,Y
+ 174 004e 8860      		ori r24,lo8(8)
+ 175 0050 8883      		st Y,r24
+  31:./timer.h     ****     
+  32:./timer.h     ****     TIMSK1 |= (1<<OCIE1A); // Enable timer compare interrupts
+ 177               	.LM10:
+ 178 0052 EFE6      		ldi r30,lo8(111)
+ 179 0054 F0E0      		ldi r31,0
+ 180 0056 8081      		ld r24,Z
+ 181 0058 8260      		ori r24,lo8(2)
+ 182 005a 8083      		st Z,r24
+  33:./timer.h     ****     
+  34:./timer.h     ****     TCCR1B |= (1<<CS10); // Set prescaler
+ 184               	.LM11:
+ 185 005c 8881      		ld r24,Y
+ 186 005e 8160      		ori r24,lo8(1)
+ 187 0060 8883      		st Y,r24
+  35:./timer.h     ****     TCCR1B |= (1<<CS12); // Set prescaler
+ 189               	.LM12:
+ 190 0062 8881      		ld r24,Y
+ 191 0064 8460      		ori r24,lo8(4)
+ 192 0066 8883      		st Y,r24
+  36:./timer.h     ****     
+  37:./timer.h     ****     sei();
+ 194               	.LM13:
+ 195               	/* #APP */
+ 196               	 ;  37 "./timer.h" 1
+ 197 0068 7894      		sei
+ 198               	 ;  0 "" 2
+ 199               	/* epilogue start */
+  38:./timer.h     ****     
+  39:./timer.h     **** }
+ 201               	.LM14:
+ 202               	/* #NOAPP */
+ 203 006a DF91      		pop r29
+ 204 006c CF91      		pop r28
+ 205 006e 1F91      		pop r17
+ 206 0070 0F91      		pop r16
+ 207 0072 FF90      		pop r15
+ 208 0074 EF90      		pop r14
+ 209 0076 0895      		ret
+ 211               	.Lscope1:
+ 213               	.global	A0
+ 215               	A0:
+ 217               	.Ltext2:
+   1:./demuxDisplay.h **** //
+   2:./demuxDisplay.h **** //  demuxDisplay.h
+   3:./demuxDisplay.h **** //  avr3
+   4:./demuxDisplay.h **** //
+   5:./demuxDisplay.h **** //  Created by Pop Mihai on 28/10/14.
+   6:./demuxDisplay.h **** //  Copyright (c) 2014 Mihai. All rights reserved.
+   7:./demuxDisplay.h **** //
+   8:./demuxDisplay.h **** //
+   9:./demuxDisplay.h **** //  Biblioteca functii pentru demultiplexarea semnalelor catre afisaj 7 segmente
+  10:./demuxDisplay.h **** //
+  11:./demuxDisplay.h **** //
+  12:./demuxDisplay.h **** // 
+  13:./demuxDisplay.h **** 
+  14:./demuxDisplay.h **** void A0(){
+ 219               	.LM15:
+ 220               	.LFBB2:
+ 221               	/* prologue: function */
+ 222               	/* frame size = 0 */
+ 223               	/* stack size = 0 */
+ 224               	.L__stack_usage = 0
+  15:./demuxDisplay.h ****     PORTD = 0x00;
+ 226               	.LM16:
+ 227 0078 1BB8      		out 0xb,__zero_reg__
+ 228 007a 0895      		ret
+ 230               	.Lscope2:
+ 232               	.global	A1
+ 234               	A1:
+  16:./demuxDisplay.h **** }
+  17:./demuxDisplay.h **** void A1(){
+ 236               	.LM17:
+ 237               	.LFBB3:
+ 238               	/* prologue: function */
+ 239               	/* frame size = 0 */
+ 240               	/* stack size = 0 */
+ 241               	.L__stack_usage = 0
+  18:./demuxDisplay.h ****     PORTD = 0x04;
+ 243               	.LM18:
+ 244 007c 84E0      		ldi r24,lo8(4)
+ 245 007e 8BB9      		out 0xb,r24
+ 246 0080 0895      		ret
+ 248               	.Lscope3:
+ 250               	.global	A2
+ 252               	A2:
+  19:./demuxDisplay.h **** }
+  20:./demuxDisplay.h **** void A2(){
+ 254               	.LM19:
+ 255               	.LFBB4:
+ 256               	/* prologue: function */
+ 257               	/* frame size = 0 */
+ 258               	/* stack size = 0 */
+ 259               	.L__stack_usage = 0
+  21:./demuxDisplay.h ****     PORTD = 0x08;
+ 261               	.LM20:
+ 262 0082 88E0      		ldi r24,lo8(8)
+ 263 0084 8BB9      		out 0xb,r24
+  22:./demuxDisplay.h ****     PORTD = 0x0C;
+ 265               	.LM21:
+ 266 0086 8CE0      		ldi r24,lo8(12)
+ 267 0088 8BB9      		out 0xb,r24
+  23:./demuxDisplay.h ****     PORTD = 0x00;
+ 269               	.LM22:
+ 270 008a 1BB8      		out 0xb,__zero_reg__
+  24:./demuxDisplay.h ****     PORTD = 0x18;
+ 272               	.LM23:
+ 273 008c 88E1      		ldi r24,lo8(24)
+ 274 008e 8BB9      		out 0xb,r24
+  25:./demuxDisplay.h ****     PORTD = 0x14;
+ 276               	.LM24:
+ 277 0090 84E1      		ldi r24,lo8(20)
+ 278 0092 8BB9      		out 0xb,r24
+  26:./demuxDisplay.h ****     PORTD = 0x1C;
+ 280               	.LM25:
+ 281 0094 8CE1      		ldi r24,lo8(28)
+ 282 0096 8BB9      		out 0xb,r24
+ 283 0098 0895      		ret
+ 285               	.Lscope4:
+ 287               	.global	A3
+ 289               	A3:
+  27:./demuxDisplay.h **** }
+  28:./demuxDisplay.h **** void A3(){
+ 291               	.LM26:
+ 292               	.LFBB5:
+ 293               	/* prologue: function */
+ 294               	/* frame size = 0 */
+ 295               	/* stack size = 0 */
+ 296               	.L__stack_usage = 0
+  29:./demuxDisplay.h ****     PORTD = 0x0C;
+ 298               	.LM27:
+ 299 009a 8CE0      		ldi r24,lo8(12)
+ 300 009c 8BB9      		out 0xb,r24
+ 301 009e 0895      		ret
+ 303               	.Lscope5:
+ 305               	.global	A4
+ 307               	A4:
+  30:./demuxDisplay.h **** }
+  31:./demuxDisplay.h **** void A4(){
+ 309               	.LM28:
+ 310               	.LFBB6:
+ 311               	/* prologue: function */
+ 312               	/* frame size = 0 */
+ 313               	/* stack size = 0 */
+ 314               	.L__stack_usage = 0
+  32:./demuxDisplay.h ****     PORTD = 0x10;
+ 316               	.LM29:
+ 317 00a0 80E1      		ldi r24,lo8(16)
+ 318 00a2 8BB9      		out 0xb,r24
+ 319 00a4 0895      		ret
+ 321               	.Lscope6:
+ 323               	.global	A5
+ 325               	A5:
+  33:./demuxDisplay.h **** }
+  34:./demuxDisplay.h **** void A5(){
+ 327               	.LM30:
+ 328               	.LFBB7:
+ 329               	/* prologue: function */
+ 330               	/* frame size = 0 */
+ 331               	/* stack size = 0 */
+ 332               	.L__stack_usage = 0
+  35:./demuxDisplay.h ****     PORTD = 0x14;
+ 334               	.LM31:
+ 335 00a6 84E1      		ldi r24,lo8(20)
+ 336 00a8 8BB9      		out 0xb,r24
+ 337 00aa 0895      		ret
+ 339               	.Lscope7:
+ 341               	.global	A6
+ 343               	A6:
+  36:./demuxDisplay.h **** }
+  37:./demuxDisplay.h **** void A6(){
+ 345               	.LM32:
+ 346               	.LFBB8:
+ 347               	/* prologue: function */
+ 348               	/* frame size = 0 */
+ 349               	/* stack size = 0 */
+ 350               	.L__stack_usage = 0
+  38:./demuxDisplay.h ****     PORTD = 0x18;
+ 352               	.LM33:
+ 353 00ac 88E1      		ldi r24,lo8(24)
+ 354 00ae 8BB9      		out 0xb,r24
+ 355 00b0 0895      		ret
+ 357               	.Lscope8:
+ 359               	.global	A7
+ 361               	A7:
+  39:./demuxDisplay.h **** }
+  40:./demuxDisplay.h **** void A7(){
+ 363               	.LM34:
+ 364               	.LFBB9:
+ 365               	/* prologue: function */
+ 366               	/* frame size = 0 */
+ 367               	/* stack size = 0 */
+ 368               	.L__stack_usage = 0
+  41:./demuxDisplay.h ****     PORTD = 0x1C;
+ 370               	.LM35:
+ 371 00b2 8CE1      		ldi r24,lo8(28)
+ 372 00b4 8BB9      		out 0xb,r24
+ 373 00b6 0895      		ret
+ 375               	.Lscope9:
+ 376               		.section	.text.startup,"ax",@progbits
+ 378               	.global	main
+ 380               	main:
+ 382               	.Ltext3:
+   1:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** # define F_CPU 16000000UL
+   2:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** 
+   3:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** #include <avr/io.h>
+   4:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** #include <util/delay.h>
+   5:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** #include <avr/interrupt.h>
+   6:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** 
+   7:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** #include <timer.h>
+   8:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** #include <demuxDisplay.h>
+   9:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** 
+  10:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** 
+  11:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** int i=0;
+  12:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** 
+  13:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** int main(void) {
+ 384               	.LM36:
+ 385               	.LFBB10:
+ 386               	/* prologue: function */
+ 387               	/* frame size = 0 */
+ 388               	/* stack size = 0 */
+ 389               	.L__stack_usage = 0
+  14:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** 
+  15:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****     timer_1(1000); // set value in ms
+ 391               	.LM37:
+ 392 0000 60E0      		ldi r22,0
+ 393 0002 70E0      		ldi r23,0
+ 394 0004 8AE7      		ldi r24,lo8(122)
+ 395 0006 94E4      		ldi r25,lo8(68)
+ 396 0008 0E94 0000 		call timer_1
+  16:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****     
+  17:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****     DDRD = 0x1C;
+ 398               	.LM38:
+ 399 000c 8CE1      		ldi r24,lo8(28)
+ 400 000e 8AB9      		out 0xa,r24
+  18:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****     DDRB = 0x01;
+ 402               	.LM39:
+ 403 0010 81E0      		ldi r24,lo8(1)
+ 404 0012 84B9      		out 0x4,r24
+  19:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****     
+  20:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** 	while (1) {
+  21:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****         
+  22:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****         if(i==1)
+  23:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****         {
+  24:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****             PORTB=1<<0;
+ 406               	.LM40:
+ 407 0014 21E0      		ldi r18,lo8(1)
+ 408               	.L13:
+  22:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****         if(i==1)
+ 410               	.LM41:
+ 411 0016 8091 0000 		lds r24,i
+ 412 001a 9091 0000 		lds r25,i+1
+ 413 001e 0197      		sbiw r24,1
+ 414 0020 01F4      		brne .L11
+ 416               	.LM42:
+ 417 0022 25B9      		out 0x5,r18
+ 418               	.L11:
+  25:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****         }
+  26:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****         if(i==2)
+ 420               	.LM43:
+ 421 0024 8091 0000 		lds r24,i
+ 422 0028 9091 0000 		lds r25,i+1
+ 423 002c 0297      		sbiw r24,2
+ 424 002e 01F4      		brne .L13
+  27:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****         {
+  28:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****             PORTB=0<<0;
+ 426               	.LM44:
+ 427 0030 15B8      		out 0x5,__zero_reg__
+  29:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****             i=0;
+ 429               	.LM45:
+ 430 0032 1092 0000 		sts i+1,__zero_reg__
+ 431 0036 1092 0000 		sts i,__zero_reg__
+ 432 003a 00C0      		rjmp .L13
+ 434               	.Lscope10:
+ 435               		.text
+ 437               	.global	__vector_11
+ 439               	__vector_11:
+  30:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****         }
+  31:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****         
+  32:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** 	}
+  33:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****     
+  34:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** 	return 0; // never reached
+  35:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** }
+  36:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** 
+  37:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** ISR(TIMER1_COMPA_vect){
+ 441               	.LM46:
+ 442               	.LFBB11:
+ 443 00b8 1F92      		push r1
+ 444 00ba 0F92      		push r0
+ 445 00bc 0FB6      		in r0,__SREG__
+ 446 00be 0F92      		push r0
+ 447 00c0 1124      		clr __zero_reg__
+ 448 00c2 8F93      		push r24
+ 449 00c4 9F93      		push r25
+ 450               	/* prologue: Signal */
+ 451               	/* frame size = 0 */
+ 452               	/* stack size = 5 */
+ 453               	.L__stack_usage = 5
+  38:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c ****     i++;
+ 455               	.LM47:
+ 456 00c6 8091 0000 		lds r24,i
+ 457 00ca 9091 0000 		lds r25,i+1
+ 458 00ce 0196      		adiw r24,1
+ 459 00d0 9093 0000 		sts i+1,r25
+ 460 00d4 8093 0000 		sts i,r24
+ 461               	/* epilogue start */
+  39:/Users/Mihai/Documents/xCode/AVR/avr3/avr3/main.c **** }...
+ 463               	.LM48:
+ 464 00d8 9F91      		pop r25
+ 465 00da 8F91      		pop r24
+ 466 00dc 0F90      		pop r0
+ 467 00de 0FBE      		out __SREG__,r0
+ 468 00e0 0F90      		pop r0
+ 469 00e2 1F90      		pop r1
+ 470 00e4 1895      		reti
+ 472               	.Lscope11:
+ 473               	.global	i
+ 474               		.section .bss
+ 477               	i:
+ 478 0000 0000      		.zero	2
+ 480               		.text
+ 482               	.Letext0:
+ 483               		.ident	"GCC: (GNU) 4.8.1"
+ 484               	.global __do_clear_bss
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc8TdztA.s:2      *ABS*:0000003e __SP_H__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc8TdztA.s:3      *ABS*:0000003d __SP_L__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc8TdztA.s:4      *ABS*:0000003f __SREG__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc8TdztA.s:5      *ABS*:00000000 __tmp_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc8TdztA.s:6      *ABS*:00000001 __zero_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc8TdztA.s:108    .text:00000000 timer_1
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc8TdztA.s:215    .text:00000078 A0
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc8TdztA.s:234    .text:0000007c A1
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc8TdztA.s:252    .text:00000082 A2
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc8TdztA.s:289    .text:0000009a A3
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc8TdztA.s:307    .text:000000a0 A4
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc8TdztA.s:325    .text:000000a6 A5
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc8TdztA.s:343    .text:000000ac A6
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc8TdztA.s:361    .text:000000b2 A7
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc8TdztA.s:380    .text.startup:00000000 main
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc8TdztA.s:477    .bss:00000000 i
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc8TdztA.s:439    .text:000000b8 __vector_11
+
+UNDEFINED SYMBOLS
+__divsf3
+__mulsf3
+__fixsfsi
+floor
+__do_clear_bss
