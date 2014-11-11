@@ -1,0 +1,149 @@
+   1               		.file	"timer_library.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   8               		.text
+   9               	.Ltext0:
+ 101               	.global	__divsf3
+ 102               	.global	__mulsf3
+ 103               	.global	__fixsfsi
+ 106               	.global	timer_1
+ 108               	timer_1:
+   1:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c **** #include <avr/io.h>
+   2:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c **** #include <util/delay.h>
+   3:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c **** #include <avr/interrupt.h>
+   4:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c **** 
+   5:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c **** #include "timer_library.h"
+   6:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c **** 
+   7:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c **** void timer_1(double tMili){ // tMili -> milisecunde
+ 110               	.LM0:
+ 111               	.LFBB1:
+ 112 0000 EF92      		push r14
+ 113 0002 FF92      		push r15
+ 114 0004 0F93      		push r16
+ 115 0006 1F93      		push r17
+ 116 0008 CF93      		push r28
+ 117 000a DF93      		push r29
+ 118               	/* prologue: function */
+ 119               	/* frame size = 0 */
+ 120               	/* stack size = 6 */
+ 121               	.L__stack_usage = 6
+   8:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     
+   9:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     double tSecunda;
+  10:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     int tRegistru;
+  11:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     
+  12:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     tSecunda = tMili/1000;
+ 123               	.LM1:
+ 124 000c 20E0      		ldi r18,0
+ 125 000e 30E0      		ldi r19,0
+ 126 0010 4AE7      		ldi r20,lo8(122)
+ 127 0012 54E4      		ldi r21,lo8(68)
+ 128 0014 0E94 0000 		call __divsf3
+  13:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     
+  14:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     tRegistru = floor(16000000/1024*tSecunda); // aprox downwards to closest integer
+ 130               	.LM2:
+ 131 0018 20E0      		ldi r18,0
+ 132 001a 34E2      		ldi r19,lo8(36)
+ 133 001c 44E7      		ldi r20,lo8(116)
+ 134 001e 56E4      		ldi r21,lo8(70)
+ 135 0020 0E94 0000 		call __mulsf3
+ 136 0024 0E94 0000 		call floor
+  15:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     
+  16:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     // Set timer 1
+  17:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     
+  18:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     cli();
+ 138               	.LM3:
+ 139               	/* #APP */
+ 140               	 ;  18 "/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c" 1
+ 141 0028 F894      		cli
+ 142               	 ;  0 "" 2
+  19:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     
+  20:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     TCCR1A=0;
+ 144               	.LM4:
+ 145               	/* #NOAPP */
+ 146 002a 1092 8000 		sts 128,__zero_reg__
+  21:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     TCCR1B=0;
+ 148               	.LM5:
+ 149 002e C1E8      		ldi r28,lo8(-127)
+ 150 0030 D0E0      		ldi r29,0
+ 151 0032 1882      		st Y,__zero_reg__
+  22:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     
+  23:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     OCR1A |= tRegistru; // 16*10^6/1*1024 [15625 = 1 secunda]
+ 153               	.LM6:
+ 154 0034 08E8      		ldi r16,lo8(-120)
+ 155 0036 10E0      		ldi r17,0
+ 156 0038 F801      		movw r30,r16
+ 157 003a E080      		ld r14,Z
+ 158 003c F180      		ldd r15,Z+1
+  14:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     tRegistru = floor(16000000/1024*tSecunda); // aprox downwards to closest integer
+ 160               	.LM7:
+ 161 003e 0E94 0000 		call __fixsfsi
+ 163               	.LM8:
+ 164 0042 6E29      		or r22,r14
+ 165 0044 7F29      		or r23,r15
+ 166 0046 F801      		movw r30,r16
+ 167 0048 7183      		std Z+1,r23
+ 168 004a 6083      		st Z,r22
+  24:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     
+  25:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     TCCR1B |= (1<<WGM12); // Turn on CTC mode
+ 170               	.LM9:
+ 171 004c 8881      		ld r24,Y
+ 172 004e 8860      		ori r24,lo8(8)
+ 173 0050 8883      		st Y,r24
+  26:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     
+  27:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     TIMSK1 |= (1<<OCIE1A); // Enable timer compare interrupts
+ 175               	.LM10:
+ 176 0052 EFE6      		ldi r30,lo8(111)
+ 177 0054 F0E0      		ldi r31,0
+ 178 0056 8081      		ld r24,Z
+ 179 0058 8260      		ori r24,lo8(2)
+ 180 005a 8083      		st Z,r24
+  28:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     
+  29:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     TCCR1B |= (1<<CS10); // Set prescaler
+ 182               	.LM11:
+ 183 005c 8881      		ld r24,Y
+ 184 005e 8160      		ori r24,lo8(1)
+ 185 0060 8883      		st Y,r24
+  30:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     TCCR1B |= (1<<CS12); // Set prescaler
+ 187               	.LM12:
+ 188 0062 8881      		ld r24,Y
+ 189 0064 8460      		ori r24,lo8(4)
+ 190 0066 8883      		st Y,r24
+  31:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     
+  32:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     sei();
+ 192               	.LM13:
+ 193               	/* #APP */
+ 194               	 ;  32 "/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c" 1
+ 195 0068 7894      		sei
+ 196               	 ;  0 "" 2
+ 197               	/* epilogue start */
+  33:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c ****     
+  34:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c **** }...
+ 199               	.LM14:
+ 200               	/* #NOAPP */
+ 201 006a DF91      		pop r29
+ 202 006c CF91      		pop r28
+ 203 006e 1F91      		pop r17
+ 204 0070 0F91      		pop r16
+ 205 0072 FF90      		pop r15
+ 206 0074 EF90      		pop r14
+ 207 0076 0895      		ret
+ 209               	.Lscope1:
+ 211               	.Letext0:
+ 212               		.ident	"GCC: (GNU) 4.8.1"
+DEFINED SYMBOLS
+                            *ABS*:00000000 timer_library.c
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccI1TA9D.s:2      *ABS*:0000003e __SP_H__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccI1TA9D.s:3      *ABS*:0000003d __SP_L__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccI1TA9D.s:4      *ABS*:0000003f __SREG__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccI1TA9D.s:5      *ABS*:00000000 __tmp_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccI1TA9D.s:6      *ABS*:00000001 __zero_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccI1TA9D.s:108    .text:00000000 timer_1
+
+UNDEFINED SYMBOLS
+__divsf3
+__mulsf3
+__fixsfsi
+floor

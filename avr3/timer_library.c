@@ -1,13 +1,8 @@
-//
-//  timer.h
-//  avr3
-//
-//  Created by Pop Mihai on 28/10/14.
-//  Copyright (c) 2014 Mihai. All rights reserved.
-//
+#include <avr/io.h>
+#include <util/delay.h>
+#include <avr/interrupt.h>
 
-#ifndef avr3_timer_h
-#define avr3_timer_h
+#include "timer_library.h"
 
 void timer_1(double tMili){ // tMili -> milisecunde
     
@@ -37,5 +32,3 @@ void timer_1(double tMili){ // tMili -> milisecunde
     sei();
     
 }
-
-#endif

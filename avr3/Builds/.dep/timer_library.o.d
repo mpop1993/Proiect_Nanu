@@ -1,4 +1,5 @@
-Builds/main.o: /Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c \
+Builds/timer_library.o: \
+ /Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.c \
  /usr/local/CrossPack-AVR-20131216/avr/include/avr/io.h \
  /usr/local/CrossPack-AVR-20131216/avr/include/avr/sfr_defs.h \
  /usr/local/CrossPack-AVR-20131216/avr/include/inttypes.h \
@@ -14,7 +15,7 @@ Builds/main.o: /Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c \
  /usr/local/CrossPack-AVR-20131216/avr/include/util/delay_basic.h \
  /usr/local/CrossPack-AVR-20131216/avr/include/math.h \
  /usr/local/CrossPack-AVR-20131216/avr/include/avr/interrupt.h \
- timer_library.h display_library.h
+ /Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.h
 
 /usr/local/CrossPack-AVR-20131216/avr/include/avr/io.h:
 
@@ -46,6 +47,4 @@ Builds/main.o: /Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c \
 
 /usr/local/CrossPack-AVR-20131216/avr/include/avr/interrupt.h:
 
-timer_library.h:
-
-display_library.h:
+/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/timer_library.h:

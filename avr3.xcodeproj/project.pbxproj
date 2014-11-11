@@ -9,14 +9,21 @@
 /* Begin PBXBuildFile section */
 		9111F0FF19F83A190025DD1A /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 9111F0FE19F83A190025DD1A /* main.c */; };
 		9111F10219F83A190025DD1A /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 9111F10119F83A190025DD1A /* Makefile */; };
+		91E79CA91A112F9F006DC779 /* timer_library.c in Sources */ = {isa = PBXBuildFile; fileRef = 91E79CA71A112F9F006DC779 /* timer_library.c */; };
+		91E79CAF1A112FD3006DC779 /* shift_reg_library.c in Sources */ = {isa = PBXBuildFile; fileRef = 91E79CAD1A112FD3006DC779 /* shift_reg_library.c */; };
+		91E79CB21A128212006DC779 /* display_library.c in Sources */ = {isa = PBXBuildFile; fileRef = 91E79CB01A128212006DC779 /* display_library.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9105A67819FFDFA100817250 /* timer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timer.h; sourceTree = "<group>"; };
-		9105A67A19FFE54300817250 /* demuxDisplay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = demuxDisplay.h; sourceTree = "<group>"; };
 		9111F0FB19F83A190025DD1A /* Index */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Index; sourceTree = BUILT_PRODUCTS_DIR; };
 		9111F0FE19F83A190025DD1A /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		9111F10119F83A190025DD1A /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		91E79CA71A112F9F006DC779 /* timer_library.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = timer_library.c; sourceTree = "<group>"; };
+		91E79CA81A112F9F006DC779 /* timer_library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timer_library.h; sourceTree = "<group>"; };
+		91E79CAD1A112FD3006DC779 /* shift_reg_library.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = shift_reg_library.c; sourceTree = "<group>"; };
+		91E79CAE1A112FD3006DC779 /* shift_reg_library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shift_reg_library.h; sourceTree = "<group>"; };
+		91E79CB01A128212006DC779 /* display_library.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = display_library.c; sourceTree = "<group>"; };
+		91E79CB11A128212006DC779 /* display_library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = display_library.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -41,8 +48,12 @@
 			children = (
 				9111F0FE19F83A190025DD1A /* main.c */,
 				9111F10019F83A190025DD1A /* Makefiles */,
-				9105A67819FFDFA100817250 /* timer.h */,
-				9105A67A19FFE54300817250 /* demuxDisplay.h */,
+				91E79CA71A112F9F006DC779 /* timer_library.c */,
+				91E79CA81A112F9F006DC779 /* timer_library.h */,
+				91E79CAD1A112FD3006DC779 /* shift_reg_library.c */,
+				91E79CAE1A112FD3006DC779 /* shift_reg_library.h */,
+				91E79CB01A128212006DC779 /* display_library.c */,
+				91E79CB11A128212006DC779 /* display_library.h */,
 			);
 			path = avr3;
 			sourceTree = "<group>";
@@ -180,8 +191,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				91E79CA91A112F9F006DC779 /* timer_library.c in Sources */,
+				91E79CB21A128212006DC779 /* display_library.c in Sources */,
 				9111F10219F83A190025DD1A /* Makefile in Sources */,
 				9111F0FF19F83A190025DD1A /* main.c in Sources */,
+				91E79CAF1A112FD3006DC779 /* shift_reg_library.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
