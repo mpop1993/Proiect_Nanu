@@ -462,22 +462,22 @@
  500               		.ident	"GCC: (GNU) 4.8.1"
 DEFINED SYMBOLS
                             *ABS*:00000000 display_library.c
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccfXb1PV.s:2      *ABS*:0000003e __SP_H__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccfXb1PV.s:3      *ABS*:0000003d __SP_L__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccfXb1PV.s:4      *ABS*:0000003f __SREG__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccfXb1PV.s:5      *ABS*:00000000 __tmp_reg__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccfXb1PV.s:6      *ABS*:00000001 __zero_reg__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccfXb1PV.s:61     .text:00000000 zero
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccfXb1PV.s:101    .text:00000024 one
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccfXb1PV.s:141    .text:00000048 two
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccfXb1PV.s:181    .text:0000006c three
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccfXb1PV.s:221    .text:00000090 four
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccfXb1PV.s:261    .text:000000b4 five
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccfXb1PV.s:301    .text:000000d8 six
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccfXb1PV.s:341    .text:000000fc seven
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccfXb1PV.s:381    .text:00000120 eight
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccfXb1PV.s:421    .text:00000144 nine
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccfXb1PV.s:461    .text:00000168 clear
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccpD97S7.s:2      *ABS*:0000003e __SP_H__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccpD97S7.s:3      *ABS*:0000003d __SP_L__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccpD97S7.s:4      *ABS*:0000003f __SREG__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccpD97S7.s:5      *ABS*:00000000 __tmp_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccpD97S7.s:6      *ABS*:00000001 __zero_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccpD97S7.s:61     .text:00000000 zero
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccpD97S7.s:101    .text:00000024 one
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccpD97S7.s:141    .text:00000048 two
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccpD97S7.s:181    .text:0000006c three
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccpD97S7.s:221    .text:00000090 four
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccpD97S7.s:261    .text:000000b4 five
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccpD97S7.s:301    .text:000000d8 six
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccpD97S7.s:341    .text:000000fc seven
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccpD97S7.s:381    .text:00000120 eight
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccpD97S7.s:421    .text:00000144 nine
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccpD97S7.s:461    .text:00000168 clear
 
 UNDEFINED SYMBOLS
 shiftOne
