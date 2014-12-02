@@ -19,11 +19,21 @@ int main(void) {
     DDRB = 0xff;
     
     
-    
-    while(1){
 
-       pwmGenerator(3, 255, i);
-        i++;
+    while(1){
+        while(i<1020){
+            i=i+5;
+            pwmGenerator(6, 1024, i);
+            _delay_ms(10);
+        }
+        _delay_ms(1000);
+        while(i>0){
+            i=i-5;
+            pwmGenerator(6, 1024, i);
+            _delay_ms(10);
+        }
+        _delay_ms(1000);
+
         
     }
 	return 0;     

@@ -6,8 +6,8 @@
    6               	__zero_reg__ = 1
    8               		.text
    9               	.Ltext0:
- 103               	.global	pwm_3
- 105               	pwm_3:
+ 104               	.global	pwm_6
+ 106               	pwm_6:
    1:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** #include <avr/io.h>
    2:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** #include <util/delay.h>
    3:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** #include <avr/interrupt.h>
@@ -16,124 +16,113 @@
    6:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** #include "timer_library.h"
    7:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** 
    8:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** 
-   9:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** void pwm_3(int prescaler, int duty){
- 107               	.LM0:
- 108               	.LFBB1:
- 109               	/* prologue: function */
- 110               	/* frame size = 0 */
- 111               	/* stack size = 0 */
- 112               	.L__stack_usage = 0
+   9:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** void pwm_6(int prescaler, int duty){
+ 108               	.LM0:
+ 109               	.LFBB1:
+ 110               	/* prologue: function */
+ 111               	/* frame size = 0 */
+ 112               	/* stack size = 0 */
+ 113               	.L__stack_usage = 0
   10:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
   11:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     cli();
- 114               	.LM1:
- 115               	/* #APP */
- 116               	 ;  11 "/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c" 1
- 117 0000 F894      		cli
- 118               	 ;  0 "" 2
-  12:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
+ 115               	.LM1:
+ 116               	/* #APP */
+ 117               	 ;  11 "/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c" 1
+ 118 0000 F894      		cli
+ 119               	 ;  0 "" 2
+  12:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** 
   13:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****    // OCR0A |= 255; // Output Compare Register 0 A ( -> valoarea pana la care numara)
   14:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
-  15:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     TCCR0A |= (1<<COM0A1);
- 120               	.LM2:
- 121               	/* #NOAPP */
- 122 0002 84B5      		in r24,0x24
- 123 0004 8068      		ori r24,lo8(-128)
- 124 0006 84BD      		out 0x24,r24
-  16:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     //TCCR0A |= (1<<COM0B1);
-  17:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
-  18:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     TCCR0A |= (1<<WGM00);
- 126               	.LM3:
- 127 0008 84B5      		in r24,0x24
- 128 000a 8160      		ori r24,lo8(1)
- 129 000c 84BD      		out 0x24,r24
-  19:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     TCCR0A |= (1<<WGM01);
- 131               	.LM4:
- 132 000e 84B5      		in r24,0x24
- 133 0010 8260      		ori r24,lo8(2)
- 134 0012 84BD      		out 0x24,r24
-  20:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
-  21:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     TCCR0B |= (1<<CS00); // Set prescaler
- 136               	.LM5:
- 137 0014 85B5      		in r24,0x25
- 138 0016 8160      		ori r24,lo8(1)
- 139 0018 85BD      		out 0x25,r24
-  22:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     TCCR0B |= (1<<CS02); // Set prescaler
- 141               	.LM6:
- 142 001a 85B5      		in r24,0x25
- 143 001c 8460      		ori r24,lo8(4)
- 144 001e 85BD      		out 0x25,r24
-  23:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
-  24:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     OCR0A = duty;
- 146               	.LM7:
- 147 0020 67BD      		out 0x27,r22
-  25:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
-  26:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     sei();
- 149               	.LM8:
- 150               	/* #APP */
- 151               	 ;  26 "/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c" 1
- 152 0022 7894      		sei
- 153               	 ;  0 "" 2
- 154               	/* #NOAPP */
- 155 0024 0895      		ret
- 157               	.Lscope1:
- 162               	.global	pwmGenerator
- 164               	pwmGenerator:
-  27:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
-  28:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** }
-  29:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** /*
-  30:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** void pwm_3(int prescaler, int duty){
-  31:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
-  32:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     cli();
-  33:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
-  34:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     OCR1A |= 15000; // Output Compare Register 0 A ( -> valoarea pana la care numara)
-  35:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
-  36:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     TCCR1A |= (1<<COM1A1);
-  37:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     TCCR1A |= (1<<COM1B1);
-  38:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
-  39:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     TCCR1A |= (1<<WGM10);
-  40:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     TCCR1B |= (1<<WGM12);
-  41:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
-  42:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     TCCR1B |= (1<<CS10); // Set prescaler
-  43:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     TCCR1B |= (1<<CS12); // Set prescaler
-  44:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
-  45:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     OCR0A = 10000;
-  46:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
-  47:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     sei();
-  48:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
-  49:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** }*/
-  50:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** 
-  51:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** void pwmGenerator(int pinNumber, int prescaler, int duty)
-  52:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** {
- 166               	.LM9:
- 167               	.LFBB2:
- 168               	/* prologue: function */
- 169               	/* frame size = 0 */
- 170               	/* stack size = 0 */
- 171               	.L__stack_usage = 0
- 172 0026 9B01      		movw r18,r22
-  53:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     if(pinNumber == 3){
+  15:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     TCCR1A |= (1<<COM1A1);
+ 121               	.LM2:
+ 122               	/* #NOAPP */
+ 123 0002 2091 8000 		lds r18,128
+ 124 0006 2068      		ori r18,lo8(-128)
+ 125 0008 2093 8000 		sts 128,r18
+  16:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
+  17:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     TCCR1A |= (1<<WGM10);
+ 127               	.LM3:
+ 128 000c 2091 8000 		lds r18,128
+ 129 0010 2160      		ori r18,lo8(1)
+ 130 0012 2093 8000 		sts 128,r18
+  18:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     TCCR1A |= (1<<WGM11);
+ 132               	.LM4:
+ 133 0016 2091 8000 		lds r18,128
+ 134 001a 2260      		ori r18,lo8(2)
+ 135 001c 2093 8000 		sts 128,r18
+  19:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     TCCR1B |=(1<<WGM12);
+ 137               	.LM5:
+ 138 0020 2091 8100 		lds r18,129
+ 139 0024 2860      		ori r18,lo8(8)
+ 140 0026 2093 8100 		sts 129,r18
+  20:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     // 10 bit Fast PWM - timer operation mode
+  21:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
+  22:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     if(prescaler == 1024){
+ 142               	.LM6:
+ 143 002a 8115      		cp r24,__zero_reg__
+ 144 002c 9440      		sbci r25,4
+ 145 002e 01F4      		brne .L2
+  23:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****        // TCCR1B |= (1<<CS10); // Set prescaler
+  24:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****         TCCR1B |= (1<<CS12); // Set prescaler
+ 147               	.LM7:
+ 148 0030 8091 8100 		lds r24,129
+ 149 0034 8460      		ori r24,lo8(4)
+ 150 0036 8093 8100 		sts 129,r24
+ 151               	.L2:
+  25:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     }
+  26:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
+  27:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     OCR1A = duty;
+ 153               	.LM8:
+ 154 003a 7093 8900 		sts 136+1,r23
+ 155 003e 6093 8800 		sts 136,r22
+  28:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
+  29:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     sei();
+ 157               	.LM9:
+ 158               	/* #APP */
+ 159               	 ;  29 "/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c" 1
+ 160 0042 7894      		sei
+ 161               	 ;  0 "" 2
+ 162               	/* #NOAPP */
+ 163 0044 0895      		ret
+ 165               	.Lscope1:
+ 170               	.global	pwmGenerator
+ 172               	pwmGenerator:
+  30:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     
+  31:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** }
+  32:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** 
+  33:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** 
+  34:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** void pwmGenerator(int pinNumber, int prescaler, int duty)
+  35:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c **** {
  174               	.LM10:
- 175 0028 0397      		sbiw r24,3
- 176 002a 01F4      		brne .L2
-  54:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****         // set pwm on pin 3
-  55:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****         pwm_3(prescaler, duty);
- 178               	.LM11:
- 179 002c BA01      		movw r22,r20
- 180 002e C901      		movw r24,r18
- 181 0030 0C94 0000 		jmp pwm_3
- 182               	.L2:
- 183 0034 0895      		ret
- 185               	.Lscope2:
- 187               	.Letext0:
- 188               		.ident	"GCC: (GNU) 4.8.1"
+ 175               	.LFBB2:
+ 176               	/* prologue: function */
+ 177               	/* frame size = 0 */
+ 178               	/* stack size = 0 */
+ 179               	.L__stack_usage = 0
+ 180 0046 9B01      		movw r18,r22
+  36:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     if(pinNumber == 6){
+ 182               	.LM11:
+ 183 0048 0697      		sbiw r24,6
+ 184 004a 01F4      		brne .L4
+  37:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****         // set pwm on pin 3
+  38:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****         pwm_6(prescaler, duty);
+ 186               	.LM12:
+ 187 004c BA01      		movw r22,r20
+ 188 004e C901      		movw r24,r18
+ 189 0050 0C94 0000 		jmp pwm_6
+ 190               	.L4:
+ 191 0054 0895      		ret
+ 193               	.Lscope2:
+ 195               	.Letext0:
+ 196               		.ident	"GCC: (GNU) 4.8.1"
 DEFINED SYMBOLS
                             *ABS*:00000000 pwm_library.c
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccy9mLAV.s:2      *ABS*:0000003e __SP_H__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccy9mLAV.s:3      *ABS*:0000003d __SP_L__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccy9mLAV.s:4      *ABS*:0000003f __SREG__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccy9mLAV.s:5      *ABS*:00000000 __tmp_reg__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccy9mLAV.s:6      *ABS*:00000001 __zero_reg__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccy9mLAV.s:105    .text:00000000 pwm_3
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccy9mLAV.s:164    .text:00000026 pwmGenerator
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccqi5I7z.s:2      *ABS*:0000003e __SP_H__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccqi5I7z.s:3      *ABS*:0000003d __SP_L__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccqi5I7z.s:4      *ABS*:0000003f __SREG__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccqi5I7z.s:5      *ABS*:00000000 __tmp_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccqi5I7z.s:6      *ABS*:00000001 __zero_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccqi5I7z.s:106    .text:00000000 pwm_6
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccqi5I7z.s:172    .text:00000046 pwmGenerator
 
 NO UNDEFINED SYMBOLS
