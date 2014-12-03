@@ -1,0 +1,115 @@
+   1               		.file	"EEPROM_library.c"
+   2               	__SP_H__ = 0x3e
+   3               	__SP_L__ = 0x3d
+   4               	__SREG__ = 0x3f
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   8               		.text
+   9               	.Ltext0:
+ 104               	.global	EEPROM_write
+ 106               	EEPROM_write:
+   1:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c **** #include <avr/io.h>
+   2:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c **** 
+   3:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c **** #include "EEPROM_library.h"
+   4:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c **** 
+   5:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c **** void EEPROM_write(unsigned int uiAddress, unsigned char ucData)
+   6:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c **** 
+   7:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c **** {
+ 108               	.LM0:
+ 109               	.LFBB1:
+ 110               	/* prologue: function */
+ 111               	/* frame size = 0 */
+ 112               	/* stack size = 0 */
+ 113               	.L__stack_usage = 0
+ 114               	.L3:
+   8:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+   9:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     /* Wait for completion of previous write */
+  10:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+  11:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     while(EECR & (1<<EEPE)); // EEPROM write enabled = EEPE
+ 116               	.LM1:
+ 117 0000 F999      		sbic 0x1f,1
+ 118 0002 00C0      		rjmp .L3
+  12:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+  13:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     /* Set up address and data registers */
+  14:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+  15:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     EEAR = uiAddress;
+ 120               	.LM2:
+ 121 0004 92BD      		out 0x21+1,r25
+ 122 0006 81BD      		out 0x21,r24
+  16:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+  17:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     EEDR = ucData;
+ 124               	.LM3:
+ 125 0008 60BD      		out 0x20,r22
+  18:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+  19:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     /* Write logical one to EEMWE */
+  20:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+  21:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     EECR |= (1<<EEMPE); // EEPROM master write enabled = EEMPE
+ 127               	.LM4:
+ 128 000a FA9A      		sbi 0x1f,2
+  22:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+  23:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     /* Start eeprom write by setting EEWE */
+  24:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+  25:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     EECR |= (1<<EEPE);
+ 130               	.LM5:
+ 131 000c F99A      		sbi 0x1f,1
+ 132 000e 0895      		ret
+ 134               	.Lscope1:
+ 137               	.global	EEPROM_read
+ 139               	EEPROM_read:
+  26:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+  27:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c **** }
+  28:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c **** 
+  29:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c **** unsigned char EEPROM_read(unsigned int uiAddress)
+  30:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c **** 
+  31:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c **** {
+ 141               	.LM6:
+ 142               	.LFBB2:
+ 143               	/* prologue: function */
+ 144               	/* frame size = 0 */
+ 145               	/* stack size = 0 */
+ 146               	.L__stack_usage = 0
+ 147               	.L7:
+  32:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+  33:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     /* Wait for completion of previous write */
+  34:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+  35:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     while(EECR & (1<<EEPE));
+ 149               	.LM7:
+ 150 0010 F999      		sbic 0x1f,1
+ 151 0012 00C0      		rjmp .L7
+  36:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+  37:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     /* Set up address register */
+  38:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+  39:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     EEAR = uiAddress;
+ 153               	.LM8:
+ 154 0014 92BD      		out 0x21+1,r25
+ 155 0016 81BD      		out 0x21,r24
+  40:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+  41:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     /* Start eeprom read by writing EERE */
+  42:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+  43:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     EECR |= (1<<EEMPE);
+ 157               	.LM9:
+ 158 0018 FA9A      		sbi 0x1f,2
+  44:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+  45:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     /* Return data from data register */
+  46:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+  47:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     return EEDR;
+ 160               	.LM10:
+ 161 001a 80B5      		in r24,0x20
+  48:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c ****     
+  49:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/EEPROM_library.c **** }...
+ 163               	.LM11:
+ 164 001c 0895      		ret
+ 166               	.Lscope2:
+ 168               	.Letext0:
+ 169               		.ident	"GCC: (GNU) 4.8.1"
+DEFINED SYMBOLS
+                            *ABS*:00000000 EEPROM_library.c
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccN7zEAW.s:2      *ABS*:0000003e __SP_H__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccN7zEAW.s:3      *ABS*:0000003d __SP_L__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccN7zEAW.s:4      *ABS*:0000003f __SREG__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccN7zEAW.s:5      *ABS*:00000000 __tmp_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccN7zEAW.s:6      *ABS*:00000001 __zero_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccN7zEAW.s:106    .text:00000000 EEPROM_write
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccN7zEAW.s:139    .text:00000010 EEPROM_read
+
+NO UNDEFINED SYMBOLS

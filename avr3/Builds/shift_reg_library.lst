@@ -6,29 +6,33 @@
    6               	__zero_reg__ = 1
    8               		.text
    9               	.Ltext0:
- 102               	.global	shiftOne
- 104               	shiftOne:
+ 103               	.global	shiftOne
+ 105               	shiftOne:
    1:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** #include <avr/io.h>
    2:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** #include <util/delay.h>
    3:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** 
-   4:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** 
-   5:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** #include "shift_reg_library.h"
-   6:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** 
-   7:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** void shiftOne(void){
- 106               	.LM0:
- 107               	.LFBB1:
- 108               	/* prologue: function */
- 109               	/* frame size = 0 */
- 110               	/* stack size = 0 */
- 111               	.L__stack_usage = 0
-   8:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     
-   9:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     PORTB = 1<<2;
- 113               	.LM1:
- 114 0000 84E0      		ldi r24,lo8(4)
- 115 0002 85B9      		out 0x5,r24
- 116               	.LBB14:
- 117               	.LBB15:
- 119               	.Ltext1:
+   4:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** #include "shift_reg_library.h"
+   5:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** 
+   6:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** void shiftOne(int number){
+ 107               	.LM0:
+ 108               	.LFBB1:
+ 109               	/* prologue: function */
+ 110               	/* frame size = 0 */
+ 111               	/* stack size = 0 */
+ 112               	.L__stack_usage = 0
+   7:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     
+   8:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     if(number==1){
+ 114               	.LM1:
+ 115 0000 8130      		cpi r24,1
+ 116 0002 9105      		cpc r25,__zero_reg__
+ 117 0004 01F4      		brne .L2
+   9:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         PORTD = 1<<4;
+ 119               	.LM2:
+ 120 0006 80E1      		ldi r24,lo8(16)
+ 121 0008 8BB9      		out 0xb,r24
+ 122               	.LBB30:
+ 123               	.LBB31:
+ 125               	.Ltext1:
    1:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** /* Copyright (c) 2002, Marek Michalkiewicz
    2:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h ****    Copyright (c) 2004,2005,2007 Joerg Wunsch
    3:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h ****    Copyright (c) 2007  Florin-Viorel Petrov
@@ -192,174 +196,260 @@
  161:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	#endif
  162:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 
  163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
- 121               	.LM2:
- 122 0004 2FEF      		ldi r18,lo8(159999)
- 123 0006 80E7      		ldi r24,hi8(159999)
- 124 0008 92E0      		ldi r25,hlo8(159999)
- 125 000a 2150      		1: subi r18,1
- 126 000c 8040      		sbci r24,0
- 127 000e 9040      		sbci r25,0
- 128 0010 01F4      		brne 1b
- 129 0012 00C0      		rjmp .
- 130 0014 0000      		nop
- 131               	.LBE15:
- 132               	.LBE14:
- 134               	.Ltext2:
-  10:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         _delay_ms(100);
-  11:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     PORTB = (1<<2)|(1<<0);
- 136               	.LM3:
- 137 0016 85E0      		ldi r24,lo8(5)
- 138 0018 85B9      		out 0x5,r24
- 139               	.LBB16:
- 140               	.LBB17:
- 142               	.Ltext3:
- 144               	.LM4:
- 145 001a 2FEF      		ldi r18,lo8(159999)
- 146 001c 80E7      		ldi r24,hi8(159999)
- 147 001e 92E0      		ldi r25,hlo8(159999)
- 148 0020 2150      		1: subi r18,1
- 149 0022 8040      		sbci r24,0
- 150 0024 9040      		sbci r25,0
- 151 0026 01F4      		brne 1b
- 152 0028 00C0      		rjmp .
- 153 002a 0000      		nop
- 154               	.LBE17:
- 155               	.LBE16:
- 157               	.Ltext4:
-  12:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         _delay_ms(100);
-  13:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     PORTB = 0<<0;
- 159               	.LM5:
- 160 002c 15B8      		out 0x5,__zero_reg__
- 161               	.LBB18:
- 162               	.LBB19:
- 164               	.Ltext5:
- 166               	.LM6:
- 167 002e 2FEF      		ldi r18,lo8(159999)
- 168 0030 80E7      		ldi r24,hi8(159999)
- 169 0032 92E0      		ldi r25,hlo8(159999)
- 170 0034 2150      		1: subi r18,1
- 171 0036 8040      		sbci r24,0
- 172 0038 9040      		sbci r25,0
- 173 003a 01F4      		brne 1b
- 174 003c 00C0      		rjmp .
- 175 003e 0000      		nop
- 176 0040 0895      		ret
- 177               	.LBE19:
- 178               	.LBE18:
- 180               	.Lscope1:
- 182               	.global	shiftNull
- 184               	shiftNull:
- 186               	.Ltext6:
-  14:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         _delay_ms(100);
-  15:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** 
-  16:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     
-  17:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** }
-  18:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** 
-  19:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** void shiftNull(void){
- 188               	.LM7:
- 189               	.LFBB2:
- 190               	/* prologue: function */
- 191               	/* frame size = 0 */
- 192               	/* stack size = 0 */
- 193               	.L__stack_usage = 0
-  20:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     
-  21:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     PORTB = 0<<2;
- 195               	.LM8:
- 196 0042 15B8      		out 0x5,__zero_reg__
- 197               	.LBB20:
- 198               	.LBB21:
- 200               	.Ltext7:
- 202               	.LM9:
- 203 0044 2FEF      		ldi r18,lo8(159999)
- 204 0046 80E7      		ldi r24,hi8(159999)
- 205 0048 92E0      		ldi r25,hlo8(159999)
- 206 004a 2150      		1: subi r18,1
- 207 004c 8040      		sbci r24,0
- 208 004e 9040      		sbci r25,0
- 209 0050 01F4      		brne 1b
- 210 0052 00C0      		rjmp .
- 211 0054 0000      		nop
- 212               	.LBE21:
- 213               	.LBE20:
+ 127               	.LM3:
+ 128 000a 8FE3      		ldi r24,lo8(-25537)
+ 129 000c 9CE9      		ldi r25,hi8(-25537)
+ 130 000e 0197      		1: sbiw r24,1
+ 131 0010 01F4      		brne 1b
+ 132 0012 00C0      		rjmp .
+ 133 0014 0000      		nop
+ 134               	.LBE31:
+ 135               	.LBE30:
+ 137               	.Ltext2:
+  10:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****             _delay_ms(20);
+  11:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         
+  12:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         PORTD = (1<<4)|(1<<3);
+ 139               	.LM4:
+ 140 0016 88E1      		ldi r24,lo8(24)
+ 141 0018 00C0      		rjmp .L4
+ 142               	.L2:
+  13:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****             _delay_ms(20);
+  14:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         
+  15:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         PORTD = 0<<3;
+  16:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****             _delay_ms(20);
+  17:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     }
+  18:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     
+  19:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     else if(number==2){
+ 144               	.LM5:
+ 145 001a 0297      		sbiw r24,2
+ 146 001c 01F4      		brne .L1
+  20:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         PORTD = 1<<6;
+ 148               	.LM6:
+ 149 001e 80E4      		ldi r24,lo8(64)
+ 150 0020 8BB9      		out 0xb,r24
+ 151               	.LBB32:
+ 152               	.LBB33:
+ 154               	.Ltext3:
+ 156               	.LM7:
+ 157 0022 8FE3      		ldi r24,lo8(-25537)
+ 158 0024 9CE9      		ldi r25,hi8(-25537)
+ 159 0026 0197      		1: sbiw r24,1
+ 160 0028 01F4      		brne 1b
+ 161 002a 00C0      		rjmp .
+ 162 002c 0000      		nop
+ 163               	.LBE33:
+ 164               	.LBE32:
+ 166               	.Ltext4:
+  21:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****             _delay_ms(20);
+  22:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         
+  23:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         PORTD = (1<<6)|(1<<5);
+ 168               	.LM8:
+ 169 002e 80E6      		ldi r24,lo8(96)
+ 170               	.L4:
+ 171 0030 8BB9      		out 0xb,r24
+ 172               	.LBB34:
+ 173               	.LBB35:
+ 175               	.Ltext5:
+ 177               	.LM9:
+ 178 0032 8FE3      		ldi r24,lo8(-25537)
+ 179 0034 9CE9      		ldi r25,hi8(-25537)
+ 180 0036 0197      		1: sbiw r24,1
+ 181 0038 01F4      		brne 1b
+ 182 003a 00C0      		rjmp .
+ 183 003c 0000      		nop
+ 184               	.LBE35:
+ 185               	.LBE34:
+ 187               	.Ltext6:
+  24:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****             _delay_ms(20);
+  25:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         
+  26:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         PORTD = 0<<5;
+ 189               	.LM10:
+ 190 003e 1BB8      		out 0xb,__zero_reg__
+ 191               	.LBB36:
+ 192               	.LBB37:
+ 194               	.Ltext7:
+ 196               	.LM11:
+ 197 0040 8FE3      		ldi r24,lo8(-25537)
+ 198 0042 9CE9      		ldi r25,hi8(-25537)
+ 199 0044 0197      		1: sbiw r24,1
+ 200 0046 01F4      		brne 1b
+ 201 0048 00C0      		rjmp .
+ 202 004a 0000      		nop
+ 203               	.L1:
+ 204 004c 0895      		ret
+ 205               	.LBE37:
+ 206               	.LBE36:
+ 208               	.Lscope1:
+ 211               	.global	shiftNull
+ 213               	shiftNull:
  215               	.Ltext8:
-  22:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         _delay_ms(100);
-  23:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     PORTB = (0<<2)|(1<<0);
- 217               	.LM10:
- 218 0056 81E0      		ldi r24,lo8(1)
- 219 0058 85B9      		out 0x5,r24
- 220               	.LBB22:
- 221               	.LBB23:
- 223               	.Ltext9:
- 225               	.LM11:
- 226 005a 2FEF      		ldi r18,lo8(159999)
- 227 005c 80E7      		ldi r24,hi8(159999)
- 228 005e 92E0      		ldi r25,hlo8(159999)
- 229 0060 2150      		1: subi r18,1
- 230 0062 8040      		sbci r24,0
- 231 0064 9040      		sbci r25,0
- 232 0066 01F4      		brne 1b
- 233 0068 00C0      		rjmp .
- 234 006a 0000      		nop
- 235               	.LBE23:
- 236               	.LBE22:
- 238               	.Ltext10:
-  24:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         _delay_ms(100);
-  25:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     PORTB = 0<<0;
- 240               	.LM12:
- 241 006c 15B8      		out 0x5,__zero_reg__
- 242               	.LBB24:
- 243               	.LBB25:
- 245               	.Ltext11:
- 247               	.LM13:
- 248 006e 2FEF      		ldi r18,lo8(159999)
- 249 0070 80E7      		ldi r24,hi8(159999)
- 250 0072 92E0      		ldi r25,hlo8(159999)
- 251 0074 2150      		1: subi r18,1
- 252 0076 8040      		sbci r24,0
- 253 0078 9040      		sbci r25,0
- 254 007a 01F4      		brne 1b
- 255 007c 00C0      		rjmp .
- 256 007e 0000      		nop
- 257 0080 0895      		ret
- 258               	.LBE25:
- 259               	.LBE24:
- 261               	.Lscope2:
- 263               	.global	serialSend
- 265               	serialSend:
- 267               	.Ltext12:
-  26:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         _delay_ms(100);
-  27:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     
-  28:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** }
-  29:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** 
-  30:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** void serialSend(void){
- 269               	.LM14:
- 270               	.LFBB3:
- 271               	/* prologue: function */
- 272               	/* frame size = 0 */
- 273               	/* stack size = 0 */
- 274               	.L__stack_usage = 0
-  31:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     
-  32:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     PORTB = 1<<1;
- 276               	.LM15:
- 277 0082 82E0      		ldi r24,lo8(2)
- 278 0084 85B9      		out 0x5,r24
-  33:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         //_delay_ms(100);
-  34:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     PORTB = 0<<1;
- 280               	.LM16:
- 281 0086 15B8      		out 0x5,__zero_reg__
- 282 0088 0895      		ret
- 284               	.Lscope3:
- 286               	.Letext0:
- 287               		.ident	"GCC: (GNU) 4.8.1"
+  27:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****             _delay_ms(20);
+  28:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     }
+  29:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** }
+  30:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** 
+  31:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** void shiftNull(int number){
+ 217               	.LM12:
+ 218               	.LFBB2:
+ 219               	/* prologue: function */
+ 220               	/* frame size = 0 */
+ 221               	/* stack size = 0 */
+ 222               	.L__stack_usage = 0
+  32:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     
+  33:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     if(number==1){
+ 224               	.LM13:
+ 225 004e 8130      		cpi r24,1
+ 226 0050 9105      		cpc r25,__zero_reg__
+ 227 0052 01F4      		brne .L7
+  34:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         PORTD = 0<<4;
+ 229               	.LM14:
+ 230 0054 1BB8      		out 0xb,__zero_reg__
+ 231               	.LBB38:
+ 232               	.LBB39:
+ 234               	.Ltext9:
+ 236               	.LM15:
+ 237 0056 8FE3      		ldi r24,lo8(-25537)
+ 238 0058 9CE9      		ldi r25,hi8(-25537)
+ 239 005a 0197      		1: sbiw r24,1
+ 240 005c 01F4      		brne 1b
+ 241 005e 00C0      		rjmp .
+ 242 0060 0000      		nop
+ 243               	.LBE39:
+ 244               	.LBE38:
+ 246               	.Ltext10:
+  35:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****             _delay_ms(20);
+  36:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         
+  37:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         PORTD = (0<<4)|(1<<3);
+ 248               	.LM16:
+ 249 0062 88E0      		ldi r24,lo8(8)
+ 250 0064 00C0      		rjmp .L9
+ 251               	.L7:
+  38:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****             _delay_ms(20);
+  39:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         
+  40:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         PORTD = 0<<3;
+  41:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****             _delay_ms(20);
+  42:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     }
+  43:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     
+  44:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     else if(number==2){
+ 253               	.LM17:
+ 254 0066 0297      		sbiw r24,2
+ 255 0068 01F4      		brne .L6
+  45:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         PORTD = 0<<6;
+ 257               	.LM18:
+ 258 006a 1BB8      		out 0xb,__zero_reg__
+ 259               	.LBB40:
+ 260               	.LBB41:
+ 262               	.Ltext11:
+ 264               	.LM19:
+ 265 006c 8FE3      		ldi r24,lo8(-25537)
+ 266 006e 9CE9      		ldi r25,hi8(-25537)
+ 267 0070 0197      		1: sbiw r24,1
+ 268 0072 01F4      		brne 1b
+ 269 0074 00C0      		rjmp .
+ 270 0076 0000      		nop
+ 271               	.LBE41:
+ 272               	.LBE40:
+ 274               	.Ltext12:
+  46:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****             _delay_ms(20);
+  47:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         
+  48:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         PORTD = (0<<6)|(1<<5);
+ 276               	.LM20:
+ 277 0078 80E2      		ldi r24,lo8(32)
+ 278               	.L9:
+ 279 007a 8BB9      		out 0xb,r24
+ 280               	.LBB42:
+ 281               	.LBB43:
+ 283               	.Ltext13:
+ 285               	.LM21:
+ 286 007c 8FE3      		ldi r24,lo8(-25537)
+ 287 007e 9CE9      		ldi r25,hi8(-25537)
+ 288 0080 0197      		1: sbiw r24,1
+ 289 0082 01F4      		brne 1b
+ 290 0084 00C0      		rjmp .
+ 291 0086 0000      		nop
+ 292               	.LBE43:
+ 293               	.LBE42:
+ 295               	.Ltext14:
+  49:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****             _delay_ms(20);
+  50:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         
+  51:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****         PORTD = 0<<5;
+ 297               	.LM22:
+ 298 0088 1BB8      		out 0xb,__zero_reg__
+ 299               	.LBB44:
+ 300               	.LBB45:
+ 302               	.Ltext15:
+ 304               	.LM23:
+ 305 008a 8FE3      		ldi r24,lo8(-25537)
+ 306 008c 9CE9      		ldi r25,hi8(-25537)
+ 307 008e 0197      		1: sbiw r24,1
+ 308 0090 01F4      		brne 1b
+ 309 0092 00C0      		rjmp .
+ 310 0094 0000      		nop
+ 311               	.L6:
+ 312 0096 0895      		ret
+ 313               	.LBE45:
+ 314               	.LBE44:
+ 316               	.Lscope2:
+ 318               	.global	serialSend
+ 320               	serialSend:
+ 322               	.Ltext16:
+  52:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****             _delay_ms(20);
+  53:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     }
+  54:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** }
+  55:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** 
+  56:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c **** void serialSend(void){
+ 324               	.LM24:
+ 325               	.LFBB3:
+ 326               	/* prologue: function */
+ 327               	/* frame size = 0 */
+ 328               	/* stack size = 0 */
+ 329               	.L__stack_usage = 0
+  57:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     
+  58:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     PORTD = 1<<7;
+ 331               	.LM25:
+ 332 0098 80E8      		ldi r24,lo8(-128)
+ 333 009a 8BB9      		out 0xb,r24
+ 334               	.LBB46:
+ 335               	.LBB47:
+ 337               	.Ltext17:
+ 339               	.LM26:
+ 340 009c 8FE3      		ldi r24,lo8(-25537)
+ 341 009e 9CE9      		ldi r25,hi8(-25537)
+ 342 00a0 0197      		1: sbiw r24,1
+ 343 00a2 01F4      		brne 1b
+ 344 00a4 00C0      		rjmp .
+ 345 00a6 0000      		nop
+ 346               	.LBE47:
+ 347               	.LBE46:
+ 349               	.Ltext18:
+  59:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     _delay_ms(20);
+  60:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/shift_reg_library.c ****     PORTD = 0<<7;
+ 351               	.LM27:
+ 352 00a8 1BB8      		out 0xb,__zero_reg__
+ 353               	.LBB48:
+ 354               	.LBB49:
+ 356               	.Ltext19:
+ 358               	.LM28:
+ 359 00aa 8FE3      		ldi r24,lo8(-25537)
+ 360 00ac 9CE9      		ldi r25,hi8(-25537)
+ 361 00ae 0197      		1: sbiw r24,1
+ 362 00b0 01F4      		brne 1b
+ 363 00b2 00C0      		rjmp .
+ 364 00b4 0000      		nop
+ 365 00b6 0895      		ret
+ 366               	.LBE49:
+ 367               	.LBE48:
+ 369               	.Lscope3:
+ 371               	.Letext0:
+ 372               		.ident	"GCC: (GNU) 4.8.1"
 DEFINED SYMBOLS
                             *ABS*:00000000 shift_reg_library.c
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccAk76E5.s:2      *ABS*:0000003e __SP_H__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccAk76E5.s:3      *ABS*:0000003d __SP_L__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccAk76E5.s:4      *ABS*:0000003f __SREG__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccAk76E5.s:5      *ABS*:00000000 __tmp_reg__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccAk76E5.s:6      *ABS*:00000001 __zero_reg__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccAk76E5.s:104    .text:00000000 shiftOne
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccAk76E5.s:184    .text:00000042 shiftNull
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccAk76E5.s:265    .text:00000082 serialSend
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc7tbws2.s:2      *ABS*:0000003e __SP_H__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc7tbws2.s:3      *ABS*:0000003d __SP_L__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc7tbws2.s:4      *ABS*:0000003f __SREG__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc7tbws2.s:5      *ABS*:00000000 __tmp_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc7tbws2.s:6      *ABS*:00000001 __zero_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc7tbws2.s:105    .text:00000000 shiftOne
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc7tbws2.s:213    .text:0000004e shiftNull
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc7tbws2.s:320    .text:00000098 serialSend
 
 NO UNDEFINED SYMBOLS

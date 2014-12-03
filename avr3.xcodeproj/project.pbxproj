@@ -10,6 +10,7 @@
 		9111F0FF19F83A190025DD1A /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = 9111F0FE19F83A190025DD1A /* main.c */; };
 		9111F10219F83A190025DD1A /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = 9111F10119F83A190025DD1A /* Makefile */; };
 		9119E9331A1BA93200A4E31D /* pwm_library.c in Sources */ = {isa = PBXBuildFile; fileRef = 9119E9311A1BA93200A4E31D /* pwm_library.c */; };
+		919780831A2F1ABB007106CE /* EEPROM_library.c in Sources */ = {isa = PBXBuildFile; fileRef = 919780811A2F1ABB007106CE /* EEPROM_library.c */; };
 		91E79CA91A112F9F006DC779 /* timer_library.c in Sources */ = {isa = PBXBuildFile; fileRef = 91E79CA71A112F9F006DC779 /* timer_library.c */; };
 		91E79CAF1A112FD3006DC779 /* shift_reg_library.c in Sources */ = {isa = PBXBuildFile; fileRef = 91E79CAD1A112FD3006DC779 /* shift_reg_library.c */; };
 		91E79CB21A128212006DC779 /* display_library.c in Sources */ = {isa = PBXBuildFile; fileRef = 91E79CB01A128212006DC779 /* display_library.c */; };
@@ -21,6 +22,8 @@
 		9111F10119F83A190025DD1A /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		9119E9311A1BA93200A4E31D /* pwm_library.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = pwm_library.c; sourceTree = "<group>"; };
 		9119E9321A1BA93200A4E31D /* pwm_library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pwm_library.h; sourceTree = "<group>"; };
+		919780811A2F1ABB007106CE /* EEPROM_library.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = EEPROM_library.c; sourceTree = "<group>"; };
+		919780821A2F1ABB007106CE /* EEPROM_library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EEPROM_library.h; sourceTree = "<group>"; };
 		91E79CA71A112F9F006DC779 /* timer_library.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = timer_library.c; sourceTree = "<group>"; };
 		91E79CA81A112F9F006DC779 /* timer_library.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = timer_library.h; sourceTree = "<group>"; };
 		91E79CAD1A112FD3006DC779 /* shift_reg_library.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = shift_reg_library.c; sourceTree = "<group>"; };
@@ -56,6 +59,8 @@
 				91E79CAD1A112FD3006DC779 /* shift_reg_library.c */,
 				91E79CAE1A112FD3006DC779 /* shift_reg_library.h */,
 				91E79CB01A128212006DC779 /* display_library.c */,
+				919780811A2F1ABB007106CE /* EEPROM_library.c */,
+				919780821A2F1ABB007106CE /* EEPROM_library.h */,
 				91E79CB11A128212006DC779 /* display_library.h */,
 				9119E9311A1BA93200A4E31D /* pwm_library.c */,
 				9119E9321A1BA93200A4E31D /* pwm_library.h */,
@@ -202,6 +207,7 @@
 				9111F10219F83A190025DD1A /* Makefile in Sources */,
 				9111F0FF19F83A190025DD1A /* main.c in Sources */,
 				91E79CAF1A112FD3006DC779 /* shift_reg_library.c in Sources */,
+				919780831A2F1ABB007106CE /* EEPROM_library.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

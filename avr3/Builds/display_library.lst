@@ -6,8 +6,8 @@
    6               	__zero_reg__ = 1
    8               		.text
    9               	.Ltext0:
-  59               	.global	zero
-  61               	zero:
+  60               	.global	zero
+  62               	zero:
    1:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** //
    2:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** //  display_library.c
    3:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** //  avr3
@@ -20,466 +20,634 @@
   10:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** 
   11:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** #include "shift_reg_library.h"
   12:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** 
-  13:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void zero(void){
-  63               	.LM0:
-  64               	.LFBB1:
-  65               	/* prologue: function */
-  66               	/* frame size = 0 */
-  67               	/* stack size = 0 */
-  68               	.L__stack_usage = 0
+  13:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void zero(int number){
+  64               	.LM0:
+  65               	.LFBB1:
+  66 0000 CF93      		push r28
+  67 0002 DF93      		push r29
+  68               	/* prologue: function */
+  69               	/* frame size = 0 */
+  70               	/* stack size = 2 */
+  71               	.L__stack_usage = 2
+  72 0004 EC01      		movw r28,r24
   14:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
-  15:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
-  70               	.LM1:
-  71 0000 0E94 0000 		call shiftOne
-  16:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
-  73               	.LM2:
-  74 0004 0E94 0000 		call shiftOne
-  17:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
-  76               	.LM3:
-  77 0008 0E94 0000 		call shiftOne
-  18:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
-  79               	.LM4:
-  80 000c 0E94 0000 		call shiftOne
-  19:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
-  82               	.LM5:
-  83 0010 0E94 0000 		call shiftOne
-  20:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
-  85               	.LM6:
-  86 0014 0E94 0000 		call shiftOne
-  21:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
-  88               	.LM7:
-  89 0018 0E94 0000 		call shiftOne
-  22:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
-  91               	.LM8:
-  92 001c 0E94 0000 		call shiftNull
+  15:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+  74               	.LM1:
+  75 0006 0E94 0000 		call shiftNull
+  16:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+  77               	.LM2:
+  78 000a CE01      		movw r24,r28
+  79 000c 0E94 0000 		call shiftOne
+  17:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+  81               	.LM3:
+  82 0010 CE01      		movw r24,r28
+  83 0012 0E94 0000 		call shiftOne
+  18:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+  85               	.LM4:
+  86 0016 CE01      		movw r24,r28
+  87 0018 0E94 0000 		call shiftOne
+  19:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+  89               	.LM5:
+  90 001c CE01      		movw r24,r28
+  91 001e 0E94 0000 		call shiftOne
+  20:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+  93               	.LM6:
+  94 0022 CE01      		movw r24,r28
+  95 0024 0E94 0000 		call shiftOne
+  21:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+  97               	.LM7:
+  98 0028 CE01      		movw r24,r28
+  99 002a 0E94 0000 		call shiftOne
+  22:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 101               	.LM8:
+ 102 002e CE01      		movw r24,r28
+ 103 0030 0E94 0000 		call shiftNull
+ 104               	/* epilogue start */
   23:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
-  94               	.LM9:
-  95 0020 0C94 0000 		jmp serialSend
-  97               	.Lscope1:
-  99               	.global	one
- 101               	one:
   24:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
   25:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }
-  26:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void one(void){
- 103               	.LM10:
- 104               	.LFBB2:
- 105               	/* prologue: function */
- 106               	/* frame size = 0 */
- 107               	/* stack size = 0 */
- 108               	.L__stack_usage = 0
+ 106               	.LM9:
+ 107 0034 DF91      		pop r29
+ 108 0036 CF91      		pop r28
+  23:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+ 110               	.LM10:
+ 111 0038 0C94 0000 		jmp serialSend
+ 113               	.Lscope1:
+ 116               	.global	one
+ 118               	one:
+  26:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void one(int number){
+ 120               	.LM11:
+ 121               	.LFBB2:
+ 122 003c CF93      		push r28
+ 123 003e DF93      		push r29
+ 124               	/* prologue: function */
+ 125               	/* frame size = 0 */
+ 126               	/* stack size = 2 */
+ 127               	.L__stack_usage = 2
+ 128 0040 EC01      		movw r28,r24
   27:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
-  28:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 110               	.LM11:
- 111 0024 0E94 0000 		call shiftOne
-  29:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 113               	.LM12:
- 114 0028 0E94 0000 		call shiftOne
-  30:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 116               	.LM13:
- 117 002c 0E94 0000 		call shiftNull
-  31:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 119               	.LM14:
- 120 0030 0E94 0000 		call shiftNull
-  32:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 122               	.LM15:
- 123 0034 0E94 0000 		call shiftOne
-  33:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 125               	.LM16:
- 126 0038 0E94 0000 		call shiftNull
-  34:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 128               	.LM17:
- 129 003c 0E94 0000 		call shiftNull
-  35:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 131               	.LM18:
- 132 0040 0E94 0000 		call shiftNull
+  28:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 130               	.LM12:
+ 131 0042 0E94 0000 		call shiftNull
+  29:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 133               	.LM13:
+ 134 0046 CE01      		movw r24,r28
+ 135 0048 0E94 0000 		call shiftOne
+  30:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 137               	.LM14:
+ 138 004c CE01      		movw r24,r28
+ 139 004e 0E94 0000 		call shiftNull
+  31:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 141               	.LM15:
+ 142 0052 CE01      		movw r24,r28
+ 143 0054 0E94 0000 		call shiftNull
+  32:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 145               	.LM16:
+ 146 0058 CE01      		movw r24,r28
+ 147 005a 0E94 0000 		call shiftOne
+  33:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 149               	.LM17:
+ 150 005e CE01      		movw r24,r28
+ 151 0060 0E94 0000 		call shiftNull
+  34:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 153               	.LM18:
+ 154 0064 CE01      		movw r24,r28
+ 155 0066 0E94 0000 		call shiftNull
+  35:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 157               	.LM19:
+ 158 006a CE01      		movw r24,r28
+ 159 006c 0E94 0000 		call shiftNull
+ 160               	/* epilogue start */
   36:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
- 134               	.LM19:
- 135 0044 0C94 0000 		jmp serialSend
- 137               	.Lscope2:
- 139               	.global	two
- 141               	two:
   37:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
   38:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }
-  39:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void two(void){
- 143               	.LM20:
- 144               	.LFBB3:
- 145               	/* prologue: function */
- 146               	/* frame size = 0 */
- 147               	/* stack size = 0 */
- 148               	.L__stack_usage = 0
-  40:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
-  41:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 150               	.LM21:
- 151 0048 0E94 0000 		call shiftOne
-  42:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 153               	.LM22:
- 154 004c 0E94 0000 		call shiftNull
-  43:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 156               	.LM23:
- 157 0050 0E94 0000 		call shiftOne
-  44:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 159               	.LM24:
- 160 0054 0E94 0000 		call shiftOne
-  45:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 162               	.LM25:
- 163 0058 0E94 0000 		call shiftOne
-  46:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 165               	.LM26:
- 166 005c 0E94 0000 		call shiftOne
-  47:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 168               	.LM27:
- 169 0060 0E94 0000 		call shiftNull
-  48:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 171               	.LM28:
- 172 0064 0E94 0000 		call shiftOne
-  49:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
- 174               	.LM29:
- 175 0068 0C94 0000 		jmp serialSend
- 177               	.Lscope3:
- 179               	.global	three
- 181               	three:
-  50:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
-  51:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }
-  52:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void three(void){
- 183               	.LM30:
- 184               	.LFBB4:
- 185               	/* prologue: function */
- 186               	/* frame size = 0 */
- 187               	/* stack size = 0 */
- 188               	.L__stack_usage = 0
-  53:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
-  54:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 190               	.LM31:
- 191 006c 0E94 0000 		call shiftOne
-  55:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 193               	.LM32:
- 194 0070 0E94 0000 		call shiftOne
-  56:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 196               	.LM33:
- 197 0074 0E94 0000 		call shiftOne
-  57:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 199               	.LM34:
- 200 0078 0E94 0000 		call shiftNull
-  58:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 202               	.LM35:
- 203 007c 0E94 0000 		call shiftOne
-  59:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 205               	.LM36:
- 206 0080 0E94 0000 		call shiftOne
-  60:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 208               	.LM37:
- 209 0084 0E94 0000 		call shiftNull
-  61:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 211               	.LM38:
- 212 0088 0E94 0000 		call shiftOne
-  62:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
- 214               	.LM39:
- 215 008c 0C94 0000 		jmp serialSend
- 217               	.Lscope4:
- 219               	.global	four
- 221               	four:
-  63:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
-  64:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }
-  65:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void four(void){
- 223               	.LM40:
- 224               	.LFBB5:
- 225               	/* prologue: function */
- 226               	/* frame size = 0 */
- 227               	/* stack size = 0 */
- 228               	.L__stack_usage = 0
-  66:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
-  67:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 230               	.LM41:
- 231 0090 0E94 0000 		call shiftOne
-  68:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 233               	.LM42:
- 234 0094 0E94 0000 		call shiftOne
-  69:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 236               	.LM43:
- 237 0098 0E94 0000 		call shiftNull
-  70:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 239               	.LM44:
- 240 009c 0E94 0000 		call shiftNull
-  71:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 242               	.LM45:
- 243 00a0 0E94 0000 		call shiftOne
-  72:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 245               	.LM46:
- 246 00a4 0E94 0000 		call shiftNull
-  73:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 248               	.LM47:
- 249 00a8 0E94 0000 		call shiftOne
-  74:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 251               	.LM48:
- 252 00ac 0E94 0000 		call shiftOne
-  75:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
- 254               	.LM49:
- 255 00b0 0C94 0000 		jmp serialSend
- 257               	.Lscope5:
- 259               	.global	five
- 261               	five:
-  76:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
-  77:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }
-  78:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void five(void){
- 263               	.LM50:
- 264               	.LFBB6:
- 265               	/* prologue: function */
- 266               	/* frame size = 0 */
- 267               	/* stack size = 0 */
- 268               	.L__stack_usage = 0
-  79:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
-  80:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 270               	.LM51:
- 271 00b4 0E94 0000 		call shiftOne
-  81:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 273               	.LM52:
- 274 00b8 0E94 0000 		call shiftOne
-  82:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 276               	.LM53:
- 277 00bc 0E94 0000 		call shiftOne
-  83:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 279               	.LM54:
- 280 00c0 0E94 0000 		call shiftNull
-  84:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 282               	.LM55:
- 283 00c4 0E94 0000 		call shiftNull
-  85:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 285               	.LM56:
- 286 00c8 0E94 0000 		call shiftOne
-  86:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 288               	.LM57:
- 289 00cc 0E94 0000 		call shiftOne
-  87:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 291               	.LM58:
- 292 00d0 0E94 0000 		call shiftOne
-  88:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
- 294               	.LM59:
- 295 00d4 0C94 0000 		jmp serialSend
- 297               	.Lscope6:
- 299               	.global	six
- 301               	six:
-  89:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
-  90:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }
-  91:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void six(void){
- 303               	.LM60:
- 304               	.LFBB7:
- 305               	/* prologue: function */
- 306               	/* frame size = 0 */
- 307               	/* stack size = 0 */
- 308               	.L__stack_usage = 0
-  92:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
-  93:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 310               	.LM61:
- 311 00d8 0E94 0000 		call shiftOne
-  94:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 313               	.LM62:
- 314 00dc 0E94 0000 		call shiftOne
-  95:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 316               	.LM63:
- 317 00e0 0E94 0000 		call shiftOne
-  96:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 319               	.LM64:
- 320 00e4 0E94 0000 		call shiftOne
-  97:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 322               	.LM65:
- 323 00e8 0E94 0000 		call shiftNull
-  98:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 325               	.LM66:
- 326 00ec 0E94 0000 		call shiftOne
-  99:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 328               	.LM67:
- 329 00f0 0E94 0000 		call shiftOne
- 100:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 331               	.LM68:
- 332 00f4 0E94 0000 		call shiftOne
- 101:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
- 334               	.LM69:
- 335 00f8 0C94 0000 		jmp serialSend
- 337               	.Lscope7:
- 339               	.global	seven
- 341               	seven:
- 102:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
- 103:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }
- 104:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void seven(void){
- 343               	.LM70:
- 344               	.LFBB8:
- 345               	/* prologue: function */
- 346               	/* frame size = 0 */
- 347               	/* stack size = 0 */
- 348               	.L__stack_usage = 0
- 105:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
- 106:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 350               	.LM71:
- 351 00fc 0E94 0000 		call shiftOne
- 107:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 353               	.LM72:
- 354 0100 0E94 0000 		call shiftOne
- 108:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 356               	.LM73:
- 357 0104 0E94 0000 		call shiftNull
- 109:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 359               	.LM74:
- 360 0108 0E94 0000 		call shiftNull
- 110:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 362               	.LM75:
- 363 010c 0E94 0000 		call shiftOne
- 111:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 365               	.LM76:
- 366 0110 0E94 0000 		call shiftOne
- 112:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 368               	.LM77:
- 369 0114 0E94 0000 		call shiftNull
- 113:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 371               	.LM78:
- 372 0118 0E94 0000 		call shiftNull
- 114:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
- 374               	.LM79:
- 375 011c 0C94 0000 		jmp serialSend
- 377               	.Lscope8:
- 379               	.global	eight
- 381               	eight:
- 115:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
- 116:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }
- 117:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void eight(void){
- 383               	.LM80:
- 384               	.LFBB9:
- 385               	/* prologue: function */
- 386               	/* frame size = 0 */
- 387               	/* stack size = 0 */
- 388               	.L__stack_usage = 0
- 118:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
- 119:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 390               	.LM81:
- 391 0120 0E94 0000 		call shiftOne
- 120:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 393               	.LM82:
- 394 0124 0E94 0000 		call shiftOne
- 121:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 396               	.LM83:
- 397 0128 0E94 0000 		call shiftOne
- 122:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 399               	.LM84:
- 400 012c 0E94 0000 		call shiftOne
- 123:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 402               	.LM85:
- 403 0130 0E94 0000 		call shiftOne
- 124:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 405               	.LM86:
- 406 0134 0E94 0000 		call shiftOne
- 125:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 408               	.LM87:
- 409 0138 0E94 0000 		call shiftOne
- 126:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 411               	.LM88:
- 412 013c 0E94 0000 		call shiftOne
- 127:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
- 414               	.LM89:
- 415 0140 0C94 0000 		jmp serialSend
- 417               	.Lscope9:
- 419               	.global	nine
- 421               	nine:
- 128:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
- 129:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }
- 130:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** 
- 131:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void nine(void){
- 423               	.LM90:
- 424               	.LFBB10:
- 425               	/* prologue: function */
- 426               	/* frame size = 0 */
- 427               	/* stack size = 0 */
- 428               	.L__stack_usage = 0
- 132:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
- 133:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 430               	.LM91:
- 431 0144 0E94 0000 		call shiftOne
- 134:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 433               	.LM92:
- 434 0148 0E94 0000 		call shiftOne
- 135:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 436               	.LM93:
- 437 014c 0E94 0000 		call shiftOne
- 136:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 439               	.LM94:
- 440 0150 0E94 0000 		call shiftNull
- 137:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 442               	.LM95:
- 443 0154 0E94 0000 		call shiftOne
- 138:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 445               	.LM96:
- 446 0158 0E94 0000 		call shiftOne
- 139:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 448               	.LM97:
- 449 015c 0E94 0000 		call shiftOne
- 140:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne();
- 451               	.LM98:
- 452 0160 0E94 0000 		call shiftOne
- 141:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
- 454               	.LM99:
- 455 0164 0C94 0000 		jmp serialSend
- 457               	.Lscope10:
- 459               	.global	clear
- 461               	clear:
- 142:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
- 143:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }
- 144:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** 
- 145:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void clear(void){
- 463               	.LM100:
- 464               	.LFBB11:
- 465               	/* prologue: function */
- 466               	/* frame size = 0 */
- 467               	/* stack size = 0 */
- 468               	.L__stack_usage = 0
- 146:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
- 147:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 470               	.LM101:
- 471 0168 0E94 0000 		call shiftNull
- 148:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 473               	.LM102:
- 474 016c 0E94 0000 		call shiftNull
- 149:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 476               	.LM103:
- 477 0170 0E94 0000 		call shiftNull
- 150:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 479               	.LM104:
- 480 0174 0E94 0000 		call shiftNull
- 151:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 482               	.LM105:
- 483 0178 0E94 0000 		call shiftNull
- 152:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 485               	.LM106:
- 486 017c 0E94 0000 		call shiftNull
- 153:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 488               	.LM107:
- 489 0180 0E94 0000 		call shiftNull
- 154:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull();
- 491               	.LM108:
- 492 0184 0E94 0000 		call shiftNull
- 155:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
- 494               	.LM109:
- 495 0188 0C94 0000 		jmp serialSend
- 497               	.Lscope11:
- 499               	.Letext0:
- 500               		.ident	"GCC: (GNU) 4.8.1"
+ 162               	.LM20:
+ 163 0070 DF91      		pop r29
+ 164 0072 CF91      		pop r28
+  36:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+ 166               	.LM21:
+ 167 0074 0C94 0000 		jmp serialSend
+ 169               	.Lscope2:
+ 172               	.global	two
+ 174               	two:
+  39:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** 
+  40:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void two(int number){
+ 176               	.LM22:
+ 177               	.LFBB3:
+ 178 0078 CF93      		push r28
+ 179 007a DF93      		push r29
+ 180               	/* prologue: function */
+ 181               	/* frame size = 0 */
+ 182               	/* stack size = 2 */
+ 183               	.L__stack_usage = 2
+ 184 007c EC01      		movw r28,r24
+  41:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
+  42:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 186               	.LM23:
+ 187 007e 0E94 0000 		call shiftNull
+  43:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 189               	.LM24:
+ 190 0082 CE01      		movw r24,r28
+ 191 0084 0E94 0000 		call shiftNull
+  44:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 193               	.LM25:
+ 194 0088 CE01      		movw r24,r28
+ 195 008a 0E94 0000 		call shiftOne
+  45:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 197               	.LM26:
+ 198 008e CE01      		movw r24,r28
+ 199 0090 0E94 0000 		call shiftOne
+  46:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 201               	.LM27:
+ 202 0094 CE01      		movw r24,r28
+ 203 0096 0E94 0000 		call shiftOne
+  47:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 205               	.LM28:
+ 206 009a CE01      		movw r24,r28
+ 207 009c 0E94 0000 		call shiftOne
+  48:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 209               	.LM29:
+ 210 00a0 CE01      		movw r24,r28
+ 211 00a2 0E94 0000 		call shiftNull
+  49:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 213               	.LM30:
+ 214 00a6 CE01      		movw r24,r28
+ 215 00a8 0E94 0000 		call shiftOne
+ 216               	/* epilogue start */
+  50:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+  51:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
+  52:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }
+ 218               	.LM31:
+ 219 00ac DF91      		pop r29
+ 220 00ae CF91      		pop r28
+  50:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+ 222               	.LM32:
+ 223 00b0 0C94 0000 		jmp serialSend
+ 225               	.Lscope3:
+ 228               	.global	three
+ 230               	three:
+  53:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void three(int number){
+ 232               	.LM33:
+ 233               	.LFBB4:
+ 234 00b4 CF93      		push r28
+ 235 00b6 DF93      		push r29
+ 236               	/* prologue: function */
+ 237               	/* frame size = 0 */
+ 238               	/* stack size = 2 */
+ 239               	.L__stack_usage = 2
+ 240 00b8 EC01      		movw r28,r24
+  54:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
+  55:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 242               	.LM34:
+ 243 00ba 0E94 0000 		call shiftNull
+  56:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 245               	.LM35:
+ 246 00be CE01      		movw r24,r28
+ 247 00c0 0E94 0000 		call shiftOne
+  57:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 249               	.LM36:
+ 250 00c4 CE01      		movw r24,r28
+ 251 00c6 0E94 0000 		call shiftOne
+  58:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 253               	.LM37:
+ 254 00ca CE01      		movw r24,r28
+ 255 00cc 0E94 0000 		call shiftNull
+  59:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 257               	.LM38:
+ 258 00d0 CE01      		movw r24,r28
+ 259 00d2 0E94 0000 		call shiftOne
+  60:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 261               	.LM39:
+ 262 00d6 CE01      		movw r24,r28
+ 263 00d8 0E94 0000 		call shiftOne
+  61:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 265               	.LM40:
+ 266 00dc CE01      		movw r24,r28
+ 267 00de 0E94 0000 		call shiftNull
+  62:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 269               	.LM41:
+ 270 00e2 CE01      		movw r24,r28
+ 271 00e4 0E94 0000 		call shiftOne
+ 272               	/* epilogue start */
+  63:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+  64:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
+  65:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }
+ 274               	.LM42:
+ 275 00e8 DF91      		pop r29
+ 276 00ea CF91      		pop r28
+  63:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+ 278               	.LM43:
+ 279 00ec 0C94 0000 		jmp serialSend
+ 281               	.Lscope4:
+ 284               	.global	four
+ 286               	four:
+  66:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void four(int number){
+ 288               	.LM44:
+ 289               	.LFBB5:
+ 290 00f0 CF93      		push r28
+ 291 00f2 DF93      		push r29
+ 292               	/* prologue: function */
+ 293               	/* frame size = 0 */
+ 294               	/* stack size = 2 */
+ 295               	.L__stack_usage = 2
+ 296 00f4 EC01      		movw r28,r24
+  67:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
+  68:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 298               	.LM45:
+ 299 00f6 0E94 0000 		call shiftNull
+  69:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 301               	.LM46:
+ 302 00fa CE01      		movw r24,r28
+ 303 00fc 0E94 0000 		call shiftOne
+  70:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 305               	.LM47:
+ 306 0100 CE01      		movw r24,r28
+ 307 0102 0E94 0000 		call shiftNull
+  71:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 309               	.LM48:
+ 310 0106 CE01      		movw r24,r28
+ 311 0108 0E94 0000 		call shiftNull
+  72:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 313               	.LM49:
+ 314 010c CE01      		movw r24,r28
+ 315 010e 0E94 0000 		call shiftOne
+  73:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 317               	.LM50:
+ 318 0112 CE01      		movw r24,r28
+ 319 0114 0E94 0000 		call shiftNull
+  74:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 321               	.LM51:
+ 322 0118 CE01      		movw r24,r28
+ 323 011a 0E94 0000 		call shiftOne
+  75:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 325               	.LM52:
+ 326 011e CE01      		movw r24,r28
+ 327 0120 0E94 0000 		call shiftOne
+ 328               	/* epilogue start */
+  76:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+  77:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
+  78:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }
+ 330               	.LM53:
+ 331 0124 DF91      		pop r29
+ 332 0126 CF91      		pop r28
+  76:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+ 334               	.LM54:
+ 335 0128 0C94 0000 		jmp serialSend
+ 337               	.Lscope5:
+ 340               	.global	five
+ 342               	five:
+  79:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void five(int number){
+ 344               	.LM55:
+ 345               	.LFBB6:
+ 346 012c CF93      		push r28
+ 347 012e DF93      		push r29
+ 348               	/* prologue: function */
+ 349               	/* frame size = 0 */
+ 350               	/* stack size = 2 */
+ 351               	.L__stack_usage = 2
+ 352 0130 EC01      		movw r28,r24
+  80:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
+  81:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 354               	.LM56:
+ 355 0132 0E94 0000 		call shiftNull
+  82:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 357               	.LM57:
+ 358 0136 CE01      		movw r24,r28
+ 359 0138 0E94 0000 		call shiftOne
+  83:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 361               	.LM58:
+ 362 013c CE01      		movw r24,r28
+ 363 013e 0E94 0000 		call shiftOne
+  84:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 365               	.LM59:
+ 366 0142 CE01      		movw r24,r28
+ 367 0144 0E94 0000 		call shiftNull
+  85:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 369               	.LM60:
+ 370 0148 CE01      		movw r24,r28
+ 371 014a 0E94 0000 		call shiftNull
+  86:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 373               	.LM61:
+ 374 014e CE01      		movw r24,r28
+ 375 0150 0E94 0000 		call shiftOne
+  87:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 377               	.LM62:
+ 378 0154 CE01      		movw r24,r28
+ 379 0156 0E94 0000 		call shiftOne
+  88:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 381               	.LM63:
+ 382 015a CE01      		movw r24,r28
+ 383 015c 0E94 0000 		call shiftOne
+ 384               	/* epilogue start */
+  89:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+  90:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
+  91:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }
+ 386               	.LM64:
+ 387 0160 DF91      		pop r29
+ 388 0162 CF91      		pop r28
+  89:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+ 390               	.LM65:
+ 391 0164 0C94 0000 		jmp serialSend
+ 393               	.Lscope6:
+ 396               	.global	six
+ 398               	six:
+  92:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void six(int number){
+ 400               	.LM66:
+ 401               	.LFBB7:
+ 402 0168 CF93      		push r28
+ 403 016a DF93      		push r29
+ 404               	/* prologue: function */
+ 405               	/* frame size = 0 */
+ 406               	/* stack size = 2 */
+ 407               	.L__stack_usage = 2
+ 408 016c EC01      		movw r28,r24
+  93:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
+  94:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 410               	.LM67:
+ 411 016e 0E94 0000 		call shiftNull
+  95:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 413               	.LM68:
+ 414 0172 CE01      		movw r24,r28
+ 415 0174 0E94 0000 		call shiftOne
+  96:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 417               	.LM69:
+ 418 0178 CE01      		movw r24,r28
+ 419 017a 0E94 0000 		call shiftOne
+  97:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 421               	.LM70:
+ 422 017e CE01      		movw r24,r28
+ 423 0180 0E94 0000 		call shiftOne
+  98:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 425               	.LM71:
+ 426 0184 CE01      		movw r24,r28
+ 427 0186 0E94 0000 		call shiftNull
+  99:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 429               	.LM72:
+ 430 018a CE01      		movw r24,r28
+ 431 018c 0E94 0000 		call shiftOne
+ 100:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 433               	.LM73:
+ 434 0190 CE01      		movw r24,r28
+ 435 0192 0E94 0000 		call shiftOne
+ 101:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 437               	.LM74:
+ 438 0196 CE01      		movw r24,r28
+ 439 0198 0E94 0000 		call shiftOne
+ 440               	/* epilogue start */
+ 102:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+ 103:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
+ 104:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }
+ 442               	.LM75:
+ 443 019c DF91      		pop r29
+ 444 019e CF91      		pop r28
+ 102:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+ 446               	.LM76:
+ 447 01a0 0C94 0000 		jmp serialSend
+ 449               	.Lscope7:
+ 452               	.global	seven
+ 454               	seven:
+ 105:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void seven(int number){
+ 456               	.LM77:
+ 457               	.LFBB8:
+ 458 01a4 CF93      		push r28
+ 459 01a6 DF93      		push r29
+ 460               	/* prologue: function */
+ 461               	/* frame size = 0 */
+ 462               	/* stack size = 2 */
+ 463               	.L__stack_usage = 2
+ 464 01a8 EC01      		movw r28,r24
+ 106:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
+ 107:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 466               	.LM78:
+ 467 01aa 0E94 0000 		call shiftNull
+ 108:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 469               	.LM79:
+ 470 01ae CE01      		movw r24,r28
+ 471 01b0 0E94 0000 		call shiftOne
+ 109:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 473               	.LM80:
+ 474 01b4 CE01      		movw r24,r28
+ 475 01b6 0E94 0000 		call shiftNull
+ 110:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 477               	.LM81:
+ 478 01ba CE01      		movw r24,r28
+ 479 01bc 0E94 0000 		call shiftNull
+ 111:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 481               	.LM82:
+ 482 01c0 CE01      		movw r24,r28
+ 483 01c2 0E94 0000 		call shiftOne
+ 112:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 485               	.LM83:
+ 486 01c6 CE01      		movw r24,r28
+ 487 01c8 0E94 0000 		call shiftOne
+ 113:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 489               	.LM84:
+ 490 01cc CE01      		movw r24,r28
+ 491 01ce 0E94 0000 		call shiftNull
+ 114:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 493               	.LM85:
+ 494 01d2 CE01      		movw r24,r28
+ 495 01d4 0E94 0000 		call shiftNull
+ 496               	/* epilogue start */
+ 115:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+ 116:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
+ 117:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }
+ 498               	.LM86:
+ 499 01d8 DF91      		pop r29
+ 500 01da CF91      		pop r28
+ 115:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+ 502               	.LM87:
+ 503 01dc 0C94 0000 		jmp serialSend
+ 505               	.Lscope8:
+ 508               	.global	eight
+ 510               	eight:
+ 118:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void eight(int number){
+ 512               	.LM88:
+ 513               	.LFBB9:
+ 514 01e0 CF93      		push r28
+ 515 01e2 DF93      		push r29
+ 516               	/* prologue: function */
+ 517               	/* frame size = 0 */
+ 518               	/* stack size = 2 */
+ 519               	.L__stack_usage = 2
+ 520 01e4 EC01      		movw r28,r24
+ 119:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
+ 120:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 522               	.LM89:
+ 523 01e6 0E94 0000 		call shiftNull
+ 121:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 525               	.LM90:
+ 526 01ea CE01      		movw r24,r28
+ 527 01ec 0E94 0000 		call shiftOne
+ 122:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 529               	.LM91:
+ 530 01f0 CE01      		movw r24,r28
+ 531 01f2 0E94 0000 		call shiftOne
+ 123:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 533               	.LM92:
+ 534 01f6 CE01      		movw r24,r28
+ 535 01f8 0E94 0000 		call shiftOne
+ 124:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 537               	.LM93:
+ 538 01fc CE01      		movw r24,r28
+ 539 01fe 0E94 0000 		call shiftOne
+ 125:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 541               	.LM94:
+ 542 0202 CE01      		movw r24,r28
+ 543 0204 0E94 0000 		call shiftOne
+ 126:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 545               	.LM95:
+ 546 0208 CE01      		movw r24,r28
+ 547 020a 0E94 0000 		call shiftOne
+ 127:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 549               	.LM96:
+ 550 020e CE01      		movw r24,r28
+ 551 0210 0E94 0000 		call shiftOne
+ 552               	/* epilogue start */
+ 128:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+ 129:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
+ 130:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }
+ 554               	.LM97:
+ 555 0214 DF91      		pop r29
+ 556 0216 CF91      		pop r28
+ 128:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+ 558               	.LM98:
+ 559 0218 0C94 0000 		jmp serialSend
+ 561               	.Lscope9:
+ 564               	.global	nine
+ 566               	nine:
+ 131:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** 
+ 132:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void nine(int number){
+ 568               	.LM99:
+ 569               	.LFBB10:
+ 570 021c CF93      		push r28
+ 571 021e DF93      		push r29
+ 572               	/* prologue: function */
+ 573               	/* frame size = 0 */
+ 574               	/* stack size = 2 */
+ 575               	.L__stack_usage = 2
+ 576 0220 EC01      		movw r28,r24
+ 133:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
+ 134:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 578               	.LM100:
+ 579 0222 0E94 0000 		call shiftNull
+ 135:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 581               	.LM101:
+ 582 0226 CE01      		movw r24,r28
+ 583 0228 0E94 0000 		call shiftOne
+ 136:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 585               	.LM102:
+ 586 022c CE01      		movw r24,r28
+ 587 022e 0E94 0000 		call shiftOne
+ 137:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 589               	.LM103:
+ 590 0232 CE01      		movw r24,r28
+ 591 0234 0E94 0000 		call shiftNull
+ 138:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 593               	.LM104:
+ 594 0238 CE01      		movw r24,r28
+ 595 023a 0E94 0000 		call shiftOne
+ 139:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 597               	.LM105:
+ 598 023e CE01      		movw r24,r28
+ 599 0240 0E94 0000 		call shiftOne
+ 140:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 601               	.LM106:
+ 602 0244 CE01      		movw r24,r28
+ 603 0246 0E94 0000 		call shiftOne
+ 141:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftOne(number);
+ 605               	.LM107:
+ 606 024a CE01      		movw r24,r28
+ 607 024c 0E94 0000 		call shiftOne
+ 608               	/* epilogue start */
+ 142:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+ 143:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
+ 144:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }
+ 610               	.LM108:
+ 611 0250 DF91      		pop r29
+ 612 0252 CF91      		pop r28
+ 142:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+ 614               	.LM109:
+ 615 0254 0C94 0000 		jmp serialSend
+ 617               	.Lscope10:
+ 620               	.global	clear
+ 622               	clear:
+ 145:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** 
+ 146:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** void clear(int number){
+ 624               	.LM110:
+ 625               	.LFBB11:
+ 626 0258 CF93      		push r28
+ 627 025a DF93      		push r29
+ 628               	/* prologue: function */
+ 629               	/* frame size = 0 */
+ 630               	/* stack size = 2 */
+ 631               	.L__stack_usage = 2
+ 632 025c EC01      		movw r28,r24
+ 147:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
+ 148:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 634               	.LM111:
+ 635 025e 0E94 0000 		call shiftNull
+ 149:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 637               	.LM112:
+ 638 0262 CE01      		movw r24,r28
+ 639 0264 0E94 0000 		call shiftNull
+ 150:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 641               	.LM113:
+ 642 0268 CE01      		movw r24,r28
+ 643 026a 0E94 0000 		call shiftNull
+ 151:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 645               	.LM114:
+ 646 026e CE01      		movw r24,r28
+ 647 0270 0E94 0000 		call shiftNull
+ 152:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 649               	.LM115:
+ 650 0274 CE01      		movw r24,r28
+ 651 0276 0E94 0000 		call shiftNull
+ 153:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 653               	.LM116:
+ 654 027a CE01      		movw r24,r28
+ 655 027c 0E94 0000 		call shiftNull
+ 154:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 657               	.LM117:
+ 658 0280 CE01      		movw r24,r28
+ 659 0282 0E94 0000 		call shiftNull
+ 155:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     shiftNull(number);
+ 661               	.LM118:
+ 662 0286 CE01      		movw r24,r28
+ 663 0288 0E94 0000 		call shiftNull
+ 664               	/* epilogue start */
+ 156:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+ 157:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     
+ 158:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c **** }...
+ 666               	.LM119:
+ 667 028c DF91      		pop r29
+ 668 028e CF91      		pop r28
+ 156:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/display_library.c ****     serialSend();
+ 670               	.LM120:
+ 671 0290 0C94 0000 		jmp serialSend
+ 673               	.Lscope11:
+ 675               	.Letext0:
+ 676               		.ident	"GCC: (GNU) 4.8.1"
 DEFINED SYMBOLS
                             *ABS*:00000000 display_library.c
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccOgDDyl.s:2      *ABS*:0000003e __SP_H__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccOgDDyl.s:3      *ABS*:0000003d __SP_L__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccOgDDyl.s:4      *ABS*:0000003f __SREG__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccOgDDyl.s:5      *ABS*:00000000 __tmp_reg__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccOgDDyl.s:6      *ABS*:00000001 __zero_reg__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccOgDDyl.s:61     .text:00000000 zero
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccOgDDyl.s:101    .text:00000024 one
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccOgDDyl.s:141    .text:00000048 two
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccOgDDyl.s:181    .text:0000006c three
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccOgDDyl.s:221    .text:00000090 four
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccOgDDyl.s:261    .text:000000b4 five
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccOgDDyl.s:301    .text:000000d8 six
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccOgDDyl.s:341    .text:000000fc seven
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccOgDDyl.s:381    .text:00000120 eight
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccOgDDyl.s:421    .text:00000144 nine
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccOgDDyl.s:461    .text:00000168 clear
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccGNoj3O.s:2      *ABS*:0000003e __SP_H__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccGNoj3O.s:3      *ABS*:0000003d __SP_L__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccGNoj3O.s:4      *ABS*:0000003f __SREG__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccGNoj3O.s:5      *ABS*:00000000 __tmp_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccGNoj3O.s:6      *ABS*:00000001 __zero_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccGNoj3O.s:62     .text:00000000 zero
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccGNoj3O.s:118    .text:0000003c one
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccGNoj3O.s:174    .text:00000078 two
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccGNoj3O.s:230    .text:000000b4 three
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccGNoj3O.s:286    .text:000000f0 four
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccGNoj3O.s:342    .text:0000012c five
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccGNoj3O.s:398    .text:00000168 six
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccGNoj3O.s:454    .text:000001a4 seven
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccGNoj3O.s:510    .text:000001e0 eight
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccGNoj3O.s:566    .text:0000021c nine
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccGNoj3O.s:622    .text:00000258 clear
 
 UNDEFINED SYMBOLS
-shiftOne
 shiftNull
+shiftOne
 serialSend

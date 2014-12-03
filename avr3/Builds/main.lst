@@ -18,56 +18,445 @@
    7:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** #include <timer_library.h>
    8:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** #include <display_library.h>
    9:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** #include <pwm_library.h>
-  10:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** 
-  11:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** int i=0;
-  12:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** double ms=400;
-  13:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** 
-  14:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** int main(void) {
+  10:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** #include <EEPROM_library.h>
+  11:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** 
+  12:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** int i=0;
+  13:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** int contor=0;
+  14:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** int nr_1=0;
+  15:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** int nr_2=0;
+  16:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** 
+  17:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** unsigned int Address = 10;
+  18:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** 
+  19:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** int main(void) {
  107               	.LM0:
  108               	.LFBB1:
  109               	/* prologue: function */
  110               	/* frame size = 0 */
  111               	/* stack size = 0 */
  112               	.L__stack_usage = 0
-  15:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** 
-  16:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     //timer_1(1000); // set value in ms
-  17:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     
-  18:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     DDRD = 0xff;
- 114               	.LM1:
- 115 0000 8FEF      		ldi r24,lo8(-1)
- 116 0002 8AB9      		out 0xa,r24
-  19:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     DDRB = 0xff;
- 118               	.LM2:
- 119 0004 84B9      		out 0x4,r24
- 120               	.L2:
   20:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     
-  21:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     
-  22:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** 
-  23:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     while(1){
-  24:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****         while(i<1020){
- 122               	.LM3:
- 123 0006 4091 0000 		lds r20,i
- 124 000a 5091 0000 		lds r21,i+1
- 125 000e 4C3F      		cpi r20,-4
- 126 0010 93E0      		ldi r25,3
- 127 0012 5907      		cpc r21,r25
- 128 0014 04F4      		brge .L10
-  25:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****             i=i+5;
+  21:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     i=EEPROM_read(Address);
+ 114               	.LM1:
+ 115 0000 8091 0000 		lds r24,Address
+ 116 0004 9091 0000 		lds r25,Address+1
+ 117 0008 0E94 0000 		call EEPROM_read
+ 118 000c 90E0      		ldi r25,0
+ 119 000e 9093 0000 		sts i+1,r25
+ 120 0012 8093 0000 		sts i,r24
+  22:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     
+  23:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     //timer_1(1000); // set value in ms
+  24:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     
+  25:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     DDRD = 0xf8;
+ 122               	.LM2:
+ 123 0016 88EF      		ldi r24,lo8(-8)
+ 124 0018 8AB9      		out 0xa,r24
+  26:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     DDRB = 0xff;
+ 126               	.LM3:
+ 127 001a 8FEF      		ldi r24,lo8(-1)
+ 128 001c 84B9      		out 0x4,r24
+  27:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     
+  28:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     // set external interrupt on digital PIN 2
+  29:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     cli();
  130               	.LM4:
- 131 0016 4B5F      		subi r20,-5
- 132 0018 5F4F      		sbci r21,-1
- 133 001a 5093 0000 		sts i+1,r21
- 134 001e 4093 0000 		sts i,r20
-  26:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****             pwmGenerator(6, 1024, i);
+ 131               	/* #APP */
+ 132               	 ;  29 "/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c" 1
+ 133 001e F894      		cli
+ 134               	 ;  0 "" 2
+  30:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     
+  31:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     PORTD |= (1 << PORTD2);    // turn On the Pull-up
  136               	.LM5:
- 137 0022 60E0      		ldi r22,0
- 138 0024 74E0      		ldi r23,lo8(4)
- 139 0026 86E0      		ldi r24,lo8(6)
- 140 0028 90E0      		ldi r25,0
- 141 002a 0E94 0000 		call pwmGenerator
- 142               	.LBB10:
- 143               	.LBB11:
- 145               	.Ltext1:
+ 137               	/* #NOAPP */
+ 138 0020 5A9A      		sbi 0xb,2
+  32:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     
+  33:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     EICRA |= (1 << ISC00);    //
+ 140               	.LM6:
+ 141 0022 8091 6900 		lds r24,105
+ 142 0026 8160      		ori r24,lo8(1)
+ 143 0028 8093 6900 		sts 105,r24
+  34:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     EICRA |= (1 << ISC01);    // set INT0 to trigger on rising edge
+ 145               	.LM7:
+ 146 002c 8091 6900 		lds r24,105
+ 147 0030 8260      		ori r24,lo8(2)
+ 148 0032 8093 6900 		sts 105,r24
+  35:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     
+  36:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     EIMSK |= (1 << INT0);     // Turns on INT0 - external interrupt mask register
+ 150               	.LM8:
+ 151 0036 E89A      		sbi 0x1d,0
+  37:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     
+  38:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     sei();
+ 153               	.LM9:
+ 154               	/* #APP */
+ 155               	 ;  38 "/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c" 1
+ 156 0038 7894      		sei
+ 157               	 ;  0 "" 2
+  39:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     
+  40:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     clear(2);
+ 159               	.LM10:
+ 160               	/* #NOAPP */
+ 161 003a 82E0      		ldi r24,lo8(2)
+ 162 003c 90E0      		ldi r25,0
+ 163 003e 0E94 0000 		call clear
+  41:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     clear(1);
+ 165               	.LM11:
+ 166 0042 81E0      		ldi r24,lo8(1)
+ 167 0044 90E0      		ldi r25,0
+ 168 0046 0E94 0000 		call clear
+  42:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     
+  43:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     while(1){
+  44:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****         
+  45:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****             if(i<100 && i>=1){
+  46:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 
+  47:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                
+  48:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 
+  49:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 nr_2=i%10;
+ 170               	.LM12:
+ 171 004a CAE0      		ldi r28,lo8(10)
+ 172 004c D0E0      		ldi r29,0
+ 173               	.L24:
+  45:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****             if(i<100 && i>=1){
+ 175               	.LM13:
+ 176 004e 8091 0000 		lds r24,i
+ 177 0052 9091 0000 		lds r25,i+1
+ 178 0056 9C01      		movw r18,r24
+ 179 0058 2150      		subi r18,1
+ 180 005a 3109      		sbc r19,__zero_reg__
+ 181 005c 2336      		cpi r18,99
+ 182 005e 3105      		cpc r19,__zero_reg__
+ 183 0060 00F0      		brlo .+2
+ 184 0062 00C0      		rjmp .L2
+ 186               	.LM14:
+ 187 0064 BE01      		movw r22,r28
+ 188 0066 0E94 0000 		call __divmodhi4
+ 189 006a 9093 0000 		sts nr_2+1,r25
+ 190 006e 8093 0000 		sts nr_2,r24
+  50:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 nr_1=i/10;
+ 192               	.LM15:
+ 193 0072 7093 0000 		sts nr_1+1,r23
+ 194 0076 6093 0000 		sts nr_1,r22
+  51:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 
+  52:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 if(nr_1>=1){
+ 196               	.LM16:
+ 197 007a 6115      		cp r22,__zero_reg__
+ 198 007c 7105      		cpc r23,__zero_reg__
+ 199 007e 01F4      		brne .+2
+ 200 0080 00C0      		rjmp .L4
+  53:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     if(nr_1==0){
+  54:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                         zero(1);
+  55:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     }
+  56:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     if(nr_1==1){
+ 202               	.LM17:
+ 203 0082 6130      		cpi r22,1
+ 204 0084 7105      		cpc r23,__zero_reg__
+ 205 0086 01F4      		brne .L5
+  57:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                         one(1);
+ 207               	.LM18:
+ 208 0088 81E0      		ldi r24,lo8(1)
+ 209 008a 90E0      		ldi r25,0
+ 210 008c 0E94 0000 		call one
+ 211               	.L5:
+  58:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     }
+  59:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     if(nr_1==2){
+ 213               	.LM19:
+ 214 0090 8091 0000 		lds r24,nr_1
+ 215 0094 9091 0000 		lds r25,nr_1+1
+ 216 0098 0297      		sbiw r24,2
+ 217 009a 01F4      		brne .L6
+  60:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                         two(1);
+ 219               	.LM20:
+ 220 009c 81E0      		ldi r24,lo8(1)
+ 221 009e 90E0      		ldi r25,0
+ 222 00a0 0E94 0000 		call two
+ 223               	.L6:
+  61:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     }
+  62:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     if(nr_1==3){
+ 225               	.LM21:
+ 226 00a4 8091 0000 		lds r24,nr_1
+ 227 00a8 9091 0000 		lds r25,nr_1+1
+ 228 00ac 0397      		sbiw r24,3
+ 229 00ae 01F4      		brne .L7
+  63:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                         three(1);
+ 231               	.LM22:
+ 232 00b0 81E0      		ldi r24,lo8(1)
+ 233 00b2 90E0      		ldi r25,0
+ 234 00b4 0E94 0000 		call three
+ 235               	.L7:
+  64:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     }
+  65:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     if(nr_1==4){
+ 237               	.LM23:
+ 238 00b8 8091 0000 		lds r24,nr_1
+ 239 00bc 9091 0000 		lds r25,nr_1+1
+ 240 00c0 0497      		sbiw r24,4
+ 241 00c2 01F4      		brne .L8
+  66:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                         four(1);
+ 243               	.LM24:
+ 244 00c4 81E0      		ldi r24,lo8(1)
+ 245 00c6 90E0      		ldi r25,0
+ 246 00c8 0E94 0000 		call four
+ 247               	.L8:
+  67:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     }
+  68:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     if(nr_1==5){
+ 249               	.LM25:
+ 250 00cc 8091 0000 		lds r24,nr_1
+ 251 00d0 9091 0000 		lds r25,nr_1+1
+ 252 00d4 0597      		sbiw r24,5
+ 253 00d6 01F4      		brne .L9
+  69:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                         five(1);
+ 255               	.LM26:
+ 256 00d8 81E0      		ldi r24,lo8(1)
+ 257 00da 90E0      		ldi r25,0
+ 258 00dc 0E94 0000 		call five
+ 259               	.L9:
+  70:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     }
+  71:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     if(nr_1==6){
+ 261               	.LM27:
+ 262 00e0 8091 0000 		lds r24,nr_1
+ 263 00e4 9091 0000 		lds r25,nr_1+1
+ 264 00e8 0697      		sbiw r24,6
+ 265 00ea 01F4      		brne .L10
+  72:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                         six(1);
+ 267               	.LM28:
+ 268 00ec 81E0      		ldi r24,lo8(1)
+ 269 00ee 90E0      		ldi r25,0
+ 270 00f0 0E94 0000 		call six
+ 271               	.L10:
+  73:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     }
+  74:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     if(nr_1==7){
+ 273               	.LM29:
+ 274 00f4 8091 0000 		lds r24,nr_1
+ 275 00f8 9091 0000 		lds r25,nr_1+1
+ 276 00fc 0797      		sbiw r24,7
+ 277 00fe 01F4      		brne .L11
+  75:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                         seven(1);
+ 279               	.LM30:
+ 280 0100 81E0      		ldi r24,lo8(1)
+ 281 0102 90E0      		ldi r25,0
+ 282 0104 0E94 0000 		call seven
+ 283               	.L11:
+  76:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     }
+  77:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     if(nr_1==8){
+ 285               	.LM31:
+ 286 0108 8091 0000 		lds r24,nr_1
+ 287 010c 9091 0000 		lds r25,nr_1+1
+ 288 0110 0897      		sbiw r24,8
+ 289 0112 01F4      		brne .L12
+  78:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                         eight(1);
+ 291               	.LM32:
+ 292 0114 81E0      		ldi r24,lo8(1)
+ 293 0116 90E0      		ldi r25,0
+ 294 0118 0E94 0000 		call eight
+ 295               	.L12:
+  79:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     }
+  80:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     if(nr_1==9){
+ 297               	.LM33:
+ 298 011c 8091 0000 		lds r24,nr_1
+ 299 0120 9091 0000 		lds r25,nr_1+1
+ 300 0124 0997      		sbiw r24,9
+ 301 0126 01F4      		brne .L4
+  81:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                         nine(1);
+ 303               	.LM34:
+ 304 0128 81E0      		ldi r24,lo8(1)
+ 305 012a 90E0      		ldi r25,0
+ 306 012c 0E94 0000 		call nine
+ 307               	.L4:
+  82:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     }
+  83:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 }
+  84:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 
+  85:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 if(nr_2==0){
+ 309               	.LM35:
+ 310 0130 8091 0000 		lds r24,nr_2
+ 311 0134 9091 0000 		lds r25,nr_2+1
+ 312 0138 892B      		or r24,r25
+ 313 013a 01F4      		brne .L14
+  86:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     zero(2);
+ 315               	.LM36:
+ 316 013c 82E0      		ldi r24,lo8(2)
+ 317 013e 90E0      		ldi r25,0
+ 318 0140 0E94 0000 		call zero
+ 319               	.L14:
+  87:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 }
+  88:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 if(nr_2==1){
+ 321               	.LM37:
+ 322 0144 8091 0000 		lds r24,nr_2
+ 323 0148 9091 0000 		lds r25,nr_2+1
+ 324 014c 0197      		sbiw r24,1
+ 325 014e 01F4      		brne .L15
+  89:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     one(2);
+ 327               	.LM38:
+ 328 0150 82E0      		ldi r24,lo8(2)
+ 329 0152 90E0      		ldi r25,0
+ 330 0154 0E94 0000 		call one
+ 331               	.L15:
+  90:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 }
+  91:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 if(nr_2==2){
+ 333               	.LM39:
+ 334 0158 8091 0000 		lds r24,nr_2
+ 335 015c 9091 0000 		lds r25,nr_2+1
+ 336 0160 0297      		sbiw r24,2
+ 337 0162 01F4      		brne .L16
+  92:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     two(2);
+ 339               	.LM40:
+ 340 0164 82E0      		ldi r24,lo8(2)
+ 341 0166 90E0      		ldi r25,0
+ 342 0168 0E94 0000 		call two
+ 343               	.L16:
+  93:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 }
+  94:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 if(nr_2==3){
+ 345               	.LM41:
+ 346 016c 8091 0000 		lds r24,nr_2
+ 347 0170 9091 0000 		lds r25,nr_2+1
+ 348 0174 0397      		sbiw r24,3
+ 349 0176 01F4      		brne .L17
+  95:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     three(2);
+ 351               	.LM42:
+ 352 0178 82E0      		ldi r24,lo8(2)
+ 353 017a 90E0      		ldi r25,0
+ 354 017c 0E94 0000 		call three
+ 355               	.L17:
+  96:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 }
+  97:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 if(nr_2==4){
+ 357               	.LM43:
+ 358 0180 8091 0000 		lds r24,nr_2
+ 359 0184 9091 0000 		lds r25,nr_2+1
+ 360 0188 0497      		sbiw r24,4
+ 361 018a 01F4      		brne .L18
+  98:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     four(2);
+ 363               	.LM44:
+ 364 018c 82E0      		ldi r24,lo8(2)
+ 365 018e 90E0      		ldi r25,0
+ 366 0190 0E94 0000 		call four
+ 367               	.L18:
+  99:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 }
+ 100:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 if(nr_2==5){
+ 369               	.LM45:
+ 370 0194 8091 0000 		lds r24,nr_2
+ 371 0198 9091 0000 		lds r25,nr_2+1
+ 372 019c 0597      		sbiw r24,5
+ 373 019e 01F4      		brne .L19
+ 101:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     five(2);
+ 375               	.LM46:
+ 376 01a0 82E0      		ldi r24,lo8(2)
+ 377 01a2 90E0      		ldi r25,0
+ 378 01a4 0E94 0000 		call five
+ 379               	.L19:
+ 102:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 }
+ 103:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 if(nr_2==6){
+ 381               	.LM47:
+ 382 01a8 8091 0000 		lds r24,nr_2
+ 383 01ac 9091 0000 		lds r25,nr_2+1
+ 384 01b0 0697      		sbiw r24,6
+ 385 01b2 01F4      		brne .L20
+ 104:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     six(2);
+ 387               	.LM48:
+ 388 01b4 82E0      		ldi r24,lo8(2)
+ 389 01b6 90E0      		ldi r25,0
+ 390 01b8 0E94 0000 		call six
+ 391               	.L20:
+ 105:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 }
+ 106:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 if(nr_2==7){
+ 393               	.LM49:
+ 394 01bc 8091 0000 		lds r24,nr_2
+ 395 01c0 9091 0000 		lds r25,nr_2+1
+ 396 01c4 0797      		sbiw r24,7
+ 397 01c6 01F4      		brne .L21
+ 107:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     seven(2);
+ 399               	.LM50:
+ 400 01c8 82E0      		ldi r24,lo8(2)
+ 401 01ca 90E0      		ldi r25,0
+ 402 01cc 0E94 0000 		call seven
+ 403               	.L21:
+ 108:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 }
+ 109:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 if(nr_2==8){
+ 405               	.LM51:
+ 406 01d0 8091 0000 		lds r24,nr_2
+ 407 01d4 9091 0000 		lds r25,nr_2+1
+ 408 01d8 0897      		sbiw r24,8
+ 409 01da 01F4      		brne .L22
+ 110:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     eight(2);
+ 411               	.LM52:
+ 412 01dc 82E0      		ldi r24,lo8(2)
+ 413 01de 90E0      		ldi r25,0
+ 414 01e0 0E94 0000 		call eight
+ 415               	.L22:
+ 111:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 }
+ 112:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 if(nr_2==9){
+ 417               	.LM53:
+ 418 01e4 8091 0000 		lds r24,nr_2
+ 419 01e8 9091 0000 		lds r25,nr_2+1
+ 420 01ec 0997      		sbiw r24,9
+ 421 01ee 01F4      		brne .L23
+ 113:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                     nine(2);
+ 423               	.LM54:
+ 424 01f0 82E0      		ldi r24,lo8(2)
+ 425 01f2 90E0      		ldi r25,0
+ 426 01f4 0E94 0000 		call nine
+ 427 01f8 00C0      		rjmp .L23
+ 428               	.L2:
+ 114:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 }
+ 115:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 
+ 116:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****             }
+ 117:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****             else{
+ 118:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 i=0;
+ 430               	.LM55:
+ 431 01fa 1092 0000 		sts i+1,__zero_reg__
+ 432 01fe 1092 0000 		sts i,__zero_reg__
+ 119:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 clear(2);
+ 434               	.LM56:
+ 435 0202 82E0      		ldi r24,lo8(2)
+ 436 0204 90E0      		ldi r25,0
+ 437 0206 0E94 0000 		call clear
+ 120:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 clear(1);
+ 439               	.LM57:
+ 440 020a 81E0      		ldi r24,lo8(1)
+ 441 020c 90E0      		ldi r25,0
+ 442 020e 0E94 0000 		call clear
+ 443               	.L23:
+ 121:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****                 
+ 122:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****             }
+ 123:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****         
+ 124:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****             EEPROM_write(Address, i);
+ 445               	.LM58:
+ 446 0212 6091 0000 		lds r22,i
+ 447 0216 8091 0000 		lds r24,Address
+ 448 021a 9091 0000 		lds r25,Address+1
+ 449 021e 0E94 0000 		call EEPROM_write
+ 125:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****         
+ 126:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     }
+ 451               	.LM59:
+ 452 0222 00C0      		rjmp .L24
+ 454               	.Lscope1:
+ 455               		.text
+ 457               	.global	__vector_1
+ 459               	__vector_1:
+ 127:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     
+ 128:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** 	return 0;     
+ 129:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** }
+ 130:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** 
+ 131:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** ISR (INT0_vect)
+ 132:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** {
+ 461               	.LM60:
+ 462               	.LFBB2:
+ 463 0000 1F92      		push r1
+ 464 0002 0F92      		push r0
+ 465 0004 0FB6      		in r0,__SREG__
+ 466 0006 0F92      		push r0
+ 467 0008 1124      		clr __zero_reg__
+ 468 000a 2F93      		push r18
+ 469 000c 8F93      		push r24
+ 470 000e 9F93      		push r25
+ 471               	/* prologue: Signal */
+ 472               	/* frame size = 0 */
+ 473               	/* stack size = 6 */
+ 474               	.L__stack_usage = 6
+ 133:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     i++;
+ 476               	.LM61:
+ 477 0010 8091 0000 		lds r24,i
+ 478 0014 9091 0000 		lds r25,i+1
+ 479 0018 0196      		adiw r24,1
+ 480 001a 9093 0000 		sts i+1,r25
+ 481 001e 8093 0000 		sts i,r24
+ 482               	.LBB6:
+ 483               	.LBB7:
+ 485               	.Ltext1:
    1:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** /* Copyright (c) 2002, Marek Michalkiewicz
    2:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h ****    Copyright (c) 2004,2005,2007 Joerg Wunsch
    3:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h ****    Copyright (c) 2007  Florin-Viorel Petrov
@@ -231,113 +620,107 @@
  161:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	#endif
  162:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 
  163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
- 147               	.LM6:
- 148 002e 8FE3      		ldi r24,lo8(-25537)
- 149 0030 9CE9      		ldi r25,hi8(-25537)
- 150 0032 0197      		1: sbiw r24,1
- 151 0034 01F4      		brne 1b
- 152               	.L7:
- 153 0036 00C0      		rjmp .
- 154 0038 0000      		nop
- 155 003a 00C0      		rjmp .L2
- 156               	.L10:
- 157               	.LBE11:
- 158               	.LBE10:
- 159               	.LBB12:
- 160               	.LBB13:
- 161 003c 2FEF      		ldi r18,lo8(3199999)
- 162 003e 83ED      		ldi r24,hi8(3199999)
- 163 0040 90E3      		ldi r25,hlo8(3199999)
- 164 0042 2150      		1: subi r18,1
- 165 0044 8040      		sbci r24,0
- 166 0046 9040      		sbci r25,0
- 167 0048 01F4      		brne 1b
- 168               	.L8:
- 169               	.LBE13:
- 170               	.LBE12:
- 171               	.LBB14:
- 172               	.LBB15:
- 173 004a 00C0      		rjmp .
- 174 004c 0000      		nop
- 175               	.LBE15:
- 176               	.LBE14:
- 178               	.Ltext2:
-  27:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****             _delay_ms(10);
-  28:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****         }
-  29:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****         _delay_ms(1000);
-  30:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****         while(i>0){
- 180               	.LM7:
- 181 004e 4091 0000 		lds r20,i
- 182 0052 5091 0000 		lds r21,i+1
- 183 0056 1416      		cp __zero_reg__,r20
- 184 0058 1506      		cpc __zero_reg__,r21
- 185 005a 04F4      		brge .L11
-  31:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****             i=i-5;
- 187               	.LM8:
- 188 005c 4550      		subi r20,5
- 189 005e 5109      		sbc r21,__zero_reg__
- 190 0060 5093 0000 		sts i+1,r21
- 191 0064 4093 0000 		sts i,r20
-  32:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****             pwmGenerator(6, 1024, i);
- 193               	.LM9:
- 194 0068 60E0      		ldi r22,0
- 195 006a 74E0      		ldi r23,lo8(4)
- 196 006c 86E0      		ldi r24,lo8(6)
- 197 006e 90E0      		ldi r25,0
- 198 0070 0E94 0000 		call pwmGenerator
- 199               	.LBB17:
- 200               	.LBB16:
- 202               	.Ltext3:
- 204               	.LM10:
- 205 0074 8FE3      		ldi r24,lo8(-25537)
- 206 0076 9CE9      		ldi r25,hi8(-25537)
- 207 0078 0197      		1: sbiw r24,1
- 208 007a 01F4      		brne 1b
- 209 007c 00C0      		rjmp .L8
- 210               	.L11:
- 211               	.LBE16:
- 212               	.LBE17:
- 213               	.LBB18:
- 214               	.LBB19:
- 215 007e 9FEF      		ldi r25,lo8(3199999)
- 216 0080 23ED      		ldi r18,hi8(3199999)
- 217 0082 80E3      		ldi r24,hlo8(3199999)
- 218 0084 9150      		1: subi r25,1
- 219 0086 2040      		sbci r18,0
- 220 0088 8040      		sbci r24,0
- 221 008a 01F4      		brne 1b
- 222 008c 00C0      		rjmp .L7
- 223               	.LBE19:
- 224               	.LBE18:
- 226               	.Lscope1:
- 227               	.global	ms
- 228               		.data
- 231               	ms:
- 232 0000 00        		.byte	0
- 233 0001 00        		.byte	0
- 234 0002 C8        		.byte	-56
- 235 0003 43        		.byte	67
- 236               	.global	i
- 237               		.section .bss
- 240               	i:
- 241 0000 0000      		.zero	2
- 244               		.text
- 246               	.Letext0:
- 247               		.ident	"GCC: (GNU) 4.8.1"
- 248               	.global __do_copy_data
- 249               	.global __do_clear_bss
+ 487               	.LM62:
+ 488 0022 2FEF      		ldi r18,lo8(159999)
+ 489 0024 80E7      		ldi r24,hi8(159999)
+ 490 0026 92E0      		ldi r25,hlo8(159999)
+ 491 0028 2150      		1: subi r18,1
+ 492 002a 8040      		sbci r24,0
+ 493 002c 9040      		sbci r25,0
+ 494 002e 01F4      		brne 1b
+ 495 0030 00C0      		rjmp .
+ 496 0032 0000      		nop
+ 497               	.LBE7:
+ 498               	.LBE6:
+ 500               	.Ltext2:
+ 134:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     _delay_ms(50);
+ 135:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     PORTB = 1<<0;
+ 502               	.LM63:
+ 503 0034 81E0      		ldi r24,lo8(1)
+ 504 0036 85B9      		out 0x5,r24
+ 505               	.LBB8:
+ 506               	.LBB9:
+ 508               	.Ltext3:
+ 510               	.LM64:
+ 511 0038 2FEF      		ldi r18,lo8(159999)
+ 512 003a 80E7      		ldi r24,hi8(159999)
+ 513 003c 92E0      		ldi r25,hlo8(159999)
+ 514 003e 2150      		1: subi r18,1
+ 515 0040 8040      		sbci r24,0
+ 516 0042 9040      		sbci r25,0
+ 517 0044 01F4      		brne 1b
+ 518 0046 00C0      		rjmp .
+ 519 0048 0000      		nop
+ 520               	.LBE9:
+ 521               	.LBE8:
+ 523               	.Ltext4:
+ 136:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     _delay_ms(50);
+ 137:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c ****     PORTB = 0<<0;
+ 525               	.LM65:
+ 526 004a 15B8      		out 0x5,__zero_reg__
+ 527               	/* epilogue start */
+ 138:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/main.c **** }
+ 529               	.LM66:
+ 530 004c 9F91      		pop r25
+ 531 004e 8F91      		pop r24
+ 532 0050 2F91      		pop r18
+ 533 0052 0F90      		pop r0
+ 534 0054 0FBE      		out __SREG__,r0
+ 535 0056 0F90      		pop r0
+ 536 0058 1F90      		pop r1
+ 537 005a 1895      		reti
+ 539               	.Lscope2:
+ 540               	.global	Address
+ 541               		.data
+ 544               	Address:
+ 545 0000 0A00      		.word	10
+ 546               	.global	nr_2
+ 547               		.section .bss
+ 550               	nr_2:
+ 551 0000 0000      		.zero	2
+ 552               	.global	nr_1
+ 555               	nr_1:
+ 556 0002 0000      		.zero	2
+ 557               	.global	contor
+ 560               	contor:
+ 561 0004 0000      		.zero	2
+ 562               	.global	i
+ 565               	i:
+ 566 0006 0000      		.zero	2
+ 572               		.text
+ 574               	.Letext0:
+ 575               		.ident	"GCC: (GNU) 4.8.1"
+ 576               	.global __do_copy_data
+ 577               	.global __do_clear_bss
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccIlwEgq.s:2      *ABS*:0000003e __SP_H__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccIlwEgq.s:3      *ABS*:0000003d __SP_L__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccIlwEgq.s:4      *ABS*:0000003f __SREG__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccIlwEgq.s:5      *ABS*:00000000 __tmp_reg__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccIlwEgq.s:6      *ABS*:00000001 __zero_reg__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccIlwEgq.s:105    .text.startup:00000000 main
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccIlwEgq.s:240    .bss:00000000 i
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccIlwEgq.s:231    .data:00000000 ms
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccZpBFf1.s:2      *ABS*:0000003e __SP_H__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccZpBFf1.s:3      *ABS*:0000003d __SP_L__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccZpBFf1.s:4      *ABS*:0000003f __SREG__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccZpBFf1.s:5      *ABS*:00000000 __tmp_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccZpBFf1.s:6      *ABS*:00000001 __zero_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccZpBFf1.s:105    .text.startup:00000000 main
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccZpBFf1.s:544    .data:00000000 Address
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccZpBFf1.s:565    .bss:00000006 i
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccZpBFf1.s:550    .bss:00000000 nr_2
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccZpBFf1.s:555    .bss:00000002 nr_1
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccZpBFf1.s:459    .text:00000000 __vector_1
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccZpBFf1.s:560    .bss:00000004 contor
 
 UNDEFINED SYMBOLS
-pwmGenerator
+EEPROM_read
+clear
+__divmodhi4
+one
+two
+three
+four
+five
+six
+seven
+eight
+nine
+zero
+EEPROM_write
 __do_copy_data
 __do_clear_bss

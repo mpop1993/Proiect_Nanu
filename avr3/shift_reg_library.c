@@ -1,36 +1,62 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-
 #include "shift_reg_library.h"
 
-void shiftOne(void){
+void shiftOne(int number){
     
-    PORTB = 1<<2;
-        _delay_ms(100);
-    PORTB = (1<<2)|(1<<0);
-        _delay_ms(100);
-    PORTB = 0<<0;
-        _delay_ms(100);
-
+    if(number==1){
+        PORTD = 1<<4;
+            _delay_ms(20);
+        
+        PORTD = (1<<4)|(1<<3);
+            _delay_ms(20);
+        
+        PORTD = 0<<3;
+            _delay_ms(20);
+    }
     
+    else if(number==2){
+        PORTD = 1<<6;
+            _delay_ms(20);
+        
+        PORTD = (1<<6)|(1<<5);
+            _delay_ms(20);
+        
+        PORTD = 0<<5;
+            _delay_ms(20);
+    }
 }
 
-void shiftNull(void){
+void shiftNull(int number){
     
-    PORTB = 0<<2;
-        _delay_ms(100);
-    PORTB = (0<<2)|(1<<0);
-        _delay_ms(100);
-    PORTB = 0<<0;
-        _delay_ms(100);
+    if(number==1){
+        PORTD = 0<<4;
+            _delay_ms(20);
+        
+        PORTD = (0<<4)|(1<<3);
+            _delay_ms(20);
+        
+        PORTD = 0<<3;
+            _delay_ms(20);
+    }
     
+    else if(number==2){
+        PORTD = 0<<6;
+            _delay_ms(20);
+        
+        PORTD = (0<<6)|(1<<5);
+            _delay_ms(20);
+        
+        PORTD = 0<<5;
+            _delay_ms(20);
+    }
 }
 
 void serialSend(void){
     
-    PORTB = 1<<1;
-        //_delay_ms(100);
-    PORTB = 0<<1;
-        //_delay_ms(100);
+    PORTD = 1<<7;
+    _delay_ms(20);
+    PORTD = 0<<7;
+    _delay_ms(20);
 }

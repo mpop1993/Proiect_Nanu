@@ -10,148 +10,149 @@
 
 #include "shift_reg_library.h"
 
-void zero(void){
+void zero(int number){
     
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    shiftNull();
+    shiftNull(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftNull(number);
     serialSend();
     
 }
-void one(void){
+void one(int number){
     
-    shiftOne();
-    shiftOne();
-    shiftNull();
-    shiftNull();
-    shiftOne();
-    shiftNull();
-    shiftNull();
-    shiftNull();
-    serialSend();
-    
-}
-void two(void){
-    
-    shiftOne();
-    shiftNull();
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    shiftNull();
-    shiftOne();
-    serialSend();
-    
-}
-void three(void){
-    
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    shiftNull();
-    shiftOne();
-    shiftOne();
-    shiftNull();
-    shiftOne();
-    serialSend();
-    
-}
-void four(void){
-    
-    shiftOne();
-    shiftOne();
-    shiftNull();
-    shiftNull();
-    shiftOne();
-    shiftNull();
-    shiftOne();
-    shiftOne();
-    serialSend();
-    
-}
-void five(void){
-    
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    shiftNull();
-    shiftNull();
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    serialSend();
-    
-}
-void six(void){
-    
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    shiftNull();
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    serialSend();
-    
-}
-void seven(void){
-    
-    shiftOne();
-    shiftOne();
-    shiftNull();
-    shiftNull();
-    shiftOne();
-    shiftOne();
-    shiftNull();
-    shiftNull();
-    serialSend();
-    
-}
-void eight(void){
-    
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    shiftOne();
+    shiftNull(number);
+    shiftOne(number);
+    shiftNull(number);
+    shiftNull(number);
+    shiftOne(number);
+    shiftNull(number);
+    shiftNull(number);
+    shiftNull(number);
     serialSend();
     
 }
 
-void nine(void){
+void two(int number){
     
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    shiftNull();
-    shiftOne();
-    shiftOne();
-    shiftOne();
-    shiftOne();
+    shiftNull(number);
+    shiftNull(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftNull(number);
+    shiftOne(number);
+    serialSend();
+    
+}
+void three(int number){
+    
+    shiftNull(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftNull(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftNull(number);
+    shiftOne(number);
+    serialSend();
+    
+}
+void four(int number){
+    
+    shiftNull(number);
+    shiftOne(number);
+    shiftNull(number);
+    shiftNull(number);
+    shiftOne(number);
+    shiftNull(number);
+    shiftOne(number);
+    shiftOne(number);
+    serialSend();
+    
+}
+void five(int number){
+    
+    shiftNull(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftNull(number);
+    shiftNull(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftOne(number);
+    serialSend();
+    
+}
+void six(int number){
+    
+    shiftNull(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftNull(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftOne(number);
+    serialSend();
+    
+}
+void seven(int number){
+    
+    shiftNull(number);
+    shiftOne(number);
+    shiftNull(number);
+    shiftNull(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftNull(number);
+    shiftNull(number);
+    serialSend();
+    
+}
+void eight(int number){
+    
+    shiftNull(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftOne(number);
     serialSend();
     
 }
 
-void clear(void){
+void nine(int number){
     
-    shiftNull();
-    shiftNull();
-    shiftNull();
-    shiftNull();
-    shiftNull();
-    shiftNull();
-    shiftNull();
-    shiftNull();
+    shiftNull(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftNull(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftOne(number);
+    shiftOne(number);
+    serialSend();
+    
+}
+
+void clear(int number){
+    
+    shiftNull(number);
+    shiftNull(number);
+    shiftNull(number);
+    shiftNull(number);
+    shiftNull(number);
+    shiftNull(number);
+    shiftNull(number);
+    shiftNull(number);
     serialSend();
     
 }

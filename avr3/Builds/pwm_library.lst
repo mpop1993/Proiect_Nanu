@@ -50,7 +50,7 @@
  133 0016 2091 8000 		lds r18,128
  134 001a 2260      		ori r18,lo8(2)
  135 001c 2093 8000 		sts 128,r18
-  19:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     TCCR1B |=(1<<WGM12);
+  19:/Users/Mihai/Documents/GitHub/Proiect_Nanu/avr3/pwm_library.c ****     TCCR1B |= (1<<WGM12);
  137               	.LM5:
  138 0020 2091 8100 		lds r18,129
  139 0024 2860      		ori r18,lo8(8)
@@ -117,12 +117,12 @@
  196               		.ident	"GCC: (GNU) 4.8.1"
 DEFINED SYMBOLS
                             *ABS*:00000000 pwm_library.c
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccqi5I7z.s:2      *ABS*:0000003e __SP_H__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccqi5I7z.s:3      *ABS*:0000003d __SP_L__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccqi5I7z.s:4      *ABS*:0000003f __SREG__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccqi5I7z.s:5      *ABS*:00000000 __tmp_reg__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccqi5I7z.s:6      *ABS*:00000001 __zero_reg__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccqi5I7z.s:106    .text:00000000 pwm_6
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccqi5I7z.s:172    .text:00000046 pwmGenerator
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccWwtqwp.s:2      *ABS*:0000003e __SP_H__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccWwtqwp.s:3      *ABS*:0000003d __SP_L__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccWwtqwp.s:4      *ABS*:0000003f __SREG__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccWwtqwp.s:5      *ABS*:00000000 __tmp_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccWwtqwp.s:6      *ABS*:00000001 __zero_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccWwtqwp.s:106    .text:00000000 pwm_6
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccWwtqwp.s:172    .text:00000046 pwmGenerator
 
 NO UNDEFINED SYMBOLS

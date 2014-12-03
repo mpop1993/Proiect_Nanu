@@ -4,26 +4,26 @@
 #define __avr3__display_library__
 
 
-void zero(void);
+void zero(int number);
 
-void one(void);
+void one(int number);
 
-void two(void);
+void two(int number);
 
-void three(void);
+void three(int number);
 
-void four(void);
+void four(int number);
 
-void five(void);
+void five(int number);
 
-void six(void);
+void six(int number);
 
-void seven(void);
+void seven(int number);
 
-void eight(void);
+void eight(int number);
 
-void nine(void);
+void nine(int number);
 
-void clear(void);
+void clear(int number);
 
 #endif 
