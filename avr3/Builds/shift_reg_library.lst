@@ -443,13 +443,13 @@
  372               		.ident	"GCC: (GNU) 4.8.1"
 DEFINED SYMBOLS
                             *ABS*:00000000 shift_reg_library.c
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc7tbws2.s:2      *ABS*:0000003e __SP_H__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc7tbws2.s:3      *ABS*:0000003d __SP_L__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc7tbws2.s:4      *ABS*:0000003f __SREG__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc7tbws2.s:5      *ABS*:00000000 __tmp_reg__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc7tbws2.s:6      *ABS*:00000001 __zero_reg__
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc7tbws2.s:105    .text:00000000 shiftOne
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc7tbws2.s:213    .text:0000004e shiftNull
-/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//cc7tbws2.s:320    .text:00000098 serialSend
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccnCGklr.s:2      *ABS*:0000003e __SP_H__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccnCGklr.s:3      *ABS*:0000003d __SP_L__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccnCGklr.s:4      *ABS*:0000003f __SREG__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccnCGklr.s:5      *ABS*:00000000 __tmp_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccnCGklr.s:6      *ABS*:00000001 __zero_reg__
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccnCGklr.s:105    .text:00000000 shiftOne
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccnCGklr.s:213    .text:0000004e shiftNull
+/var/folders/0l/v5bxx64s22z65_nc6ss582bm0000gn/T//ccnCGklr.s:320    .text:00000098 serialSend
 
 NO UNDEFINED SYMBOLS

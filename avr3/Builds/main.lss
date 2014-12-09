@@ -985,7 +985,7 @@ unsigned int Address = 10;
 
 int main(void) {
     
-    i=EEPROM_read(Address);
+    i=EEPROM_read(Address); // de vazut adresele cum sunt puse!
  53a:	80 91 00 01 	lds	r24, 0x0100
  53e:	90 91 01 01 	lds	r25, 0x0101
  542:	0e 94 5b 00 	call	0xb6	; 0xb6 <EEPROM_read>
@@ -1032,11 +1032,11 @@ int main(void) {
  57c:	81 e0       	ldi	r24, 0x01	; 1
  57e:	90 e0       	ldi	r25, 0x00	; 0
  580:	0e 94 8e 01 	call	0x31c	; 0x31c <clear>
+    
+    while(1){
         
             if(i<100 && i>=1){
-                
-               
-                
+    
                 nr_2=i%10;
  584:	ca e0       	ldi	r28, 0x0A	; 10
  586:	d0 e0       	ldi	r29, 0x00	; 0
@@ -1055,9 +1055,7 @@ int main(void) {
  598:	31 05       	cpc	r19, r1
  59a:	08 f0       	brcs	.+2      	; 0x59e <main+0x64>
  59c:	cb c0       	rjmp	.+406    	; 0x734 <main+0x1fa>
-                
-               
-                
+    
                 nr_2=i%10;
  59e:	be 01       	movw	r22, r28
  5a0:	0e 94 4f 05 	call	0xa9e	; 0xa9e <__divmodhi4>

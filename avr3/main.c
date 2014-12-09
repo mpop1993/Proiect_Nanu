@@ -43,9 +43,7 @@ int main(void) {
     while(1){
         
             if(i<100 && i>=1){
-                
-               
-                
+    
                 nr_2=i%10;
                 nr_1=i/10;
                 
